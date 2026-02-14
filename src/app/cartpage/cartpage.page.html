@@ -1,0 +1,107 @@
+<ion-content [fullscreen]="true" class="gradient-cart-page">
+
+  <!-- top navigation -->
+  <div class="cart-header-gradient">
+    <button class="header-btn" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+
+    <h1 class="header-title">My Cart</h1>
+
+    <button class="header-btn" (click)="clearCart()" *ngIf="DisplayCart.length > 0">
+      <ion-icon name="trash-outline"></ion-icon>
+    </button>
+  </div>
+
+  <!-- empty cart -->
+  <div class="empty-state" *ngIf="DisplayCart.length === 0">
+    <div class="empty-icon-circle">
+      <ion-icon name="cart-outline"></ion-icon>
+    </div>
+
+    <h2 class="empty-title">Your cart is empty</h2>
+    <p class="empty-subtitle">Add some delicious items to get started!</p>
+    <button class="browse-menu-btn" (click)="goBack()">Browse Menu</button>
+  </div>
+
+  <!-- cart items -->
+  <div class="cart-items-list" *ngIf="DisplayCart.length > 0">
+    <div class="cart-item-card" *ngFor="let item of DisplayCart">
+
+      <div class="item-image-bg" [ngStyle]="{'background': item.BackgroundColor}">
+        <img [src]="item.Image" [alt]="item.ProductName">
+      </div>
+
+      <div class="item-info-section">
+        <h3 class="item-title">{{item.ProductName}}</h3>
+        <p class="item-unit-price">
+          <span class="price-label">Unit Price:</span>
+          <span class="price-amount">${{item.Price}}</span>
+        </p>
+
+        <div class="qty-controls">
+          <button class="qty-btn" (click)="decreaseQuantity(item.CartId)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+
+          <span class="qty-display">{{item.Quantity}}</span>
+
+          <button class="qty-btn" (click)="increaseQuantity(item.CartId)">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="item-actions">
+        <button class="remove-btn" (click)="removeItem(item.CartId)">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <p class="item-subtotal">
+          <span class="subtotal-label">Total:</span>
+          <span class="subtotal-amount">${{getItemTotal(item)}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- order summary -->
+  <div class="order-summary-card" *ngIf="DisplayCart.length > 0">
+    <h3 class="summary-heading">Order Summary</h3>
+
+    <div class="summary-line">
+      <span class="line-label">Subtotal</span>
+      <span class="line-value">${{getSubtotal()}}</span>
+    </div>
+
+    <div class="summary-line">
+      <span class="line-label">Delivery Fee</span>
+      <span class="line-value">${{getDeliveryFee()}}</span>
+    </div>
+
+    <div class="summary-line">
+      <span class="line-label">Tax (10%)</span>
+      <span class="line-value">${{getTax()}}</span>
+    </div>
+
+    <div class="summary-divider"></div>
+
+    <div class="summary-line total-line">
+      <span class="line-label">Total</span>
+      <span class="line-value grand-total">${{getTotal()}}</span>
+    </div>
+  </div>
+
+  <!-- checkout bar -->
+  <div class="checkout-bar" *ngIf="DisplayCart.length > 0">
+    <div class="total-display">
+      <span class="total-text">Total</span>
+      <span class="total-price">${{getTotal()}}</span>
+    </div>
+
+    <button class="checkout-button" (click)="proceedToCheckout()">
+      <ion-icon name="card-outline"></ion-icon>
+      <span>Checkout</span>
+    </button>
+  </div>
+
+</ion-content>

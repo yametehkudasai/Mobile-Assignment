@@ -1,0 +1,106 @@
+<ion-content [fullscreen]="true" class="gradient-admin-page">
+
+  <!-- background design -->
+  <div class="floating-circles">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+  <div class="grid-pattern"></div>
+
+  <!-- Header -->
+  <div class="header-bar">
+    <button class="back-btn" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+
+    <h1 class="header-title">All Accounts</h1>
+
+    <button class="refresh-btn" (click)="loadAccounts()">
+      <ion-icon name="refresh"></ion-icon>
+    </button>
+  </div>
+
+  <!-- account statistics -->
+  <div class="stats-card">
+    <div class="stat-item">
+      <ion-icon name="people"></ion-icon>
+      <div class="stat-info">
+        <span class="stat-value">{{accounts.length}}</span>
+        <span class="stat-label">Total Accounts</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- account list -->
+  <div class="accounts-list">
+    <div class="account-card" *ngFor="let account of accounts; let i = index">
+
+      <!-- account profile & info -->
+      <div class="account-header">
+        <img [src]="account.avatar" alt="Avatar" class="account-avatar">
+        <div class="account-info">
+          <h3 class="account-name">{{account.name}}</h3>
+          <p class="account-email">{{account.email}}</p>
+        </div>
+        <ion-badge [color]="account.isCurrentUser ? 'success' : 'medium'" class="status-badge">
+          {{account.isCurrentUser ? 'Current' : 'User'}}
+        </ion-badge>
+      </div>
+
+      <!-- account details -->
+      <div class="account-details">
+        <div class="detail-row">
+          <ion-icon name="key-outline"></ion-icon>
+          <span class="detail-label">Password:</span>
+          <span class="detail-value">{{showPasswords[i] ? account.password : '••••••••'}}</span>
+
+          <button class="toggle-password-btn" (click)="togglePassword(i)">
+            <ion-icon [name]="showPasswords[i] ? 'eye-off' : 'eye'"></ion-icon>
+          </button>
+        </div>
+
+        <div class="detail-row" *ngIf="account.phone">
+          <ion-icon name="call-outline"></ion-icon>
+          <span class="detail-label">Phone:</span>
+          <span class="detail-value">{{account.phone}}</span>
+        </div>
+
+        <div class="detail-row" *ngIf="account.address">
+          <ion-icon name="location-outline"></ion-icon>
+          <span class="detail-label">Address:</span>
+          <span class="detail-value">{{account.address}}</span>
+        </div>
+
+        <div class="detail-row">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <span class="detail-label">Created:</span>
+          <span class="detail-value">{{formatDate(account.createdAt)}}</span>
+        </div>
+      </div>
+
+      <!-- account actions btn -->
+      <div class="account-actions">
+        <button class="action-btn switch-btn" (click)="switchToAccount(account)" *ngIf="!account.isCurrentUser">
+          <ion-icon name="swap-horizontal"></ion-icon>
+          <span>Switch to this account</span>
+        </button>
+
+        <button class="action-btn delete-btn" (click)="deleteAccount(account)">
+          <ion-icon name="trash-outline"></ion-icon>
+          <span>Delete</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- clear all accounts btn -->
+  <div class="danger-zone">
+    <button class="clear-all-btn" (click)="clearAllAccounts()">
+      <ion-icon name="warning"></ion-icon>
+      <span>Clear All Accounts</span>
+    </button>
+  </div>
+
+</ion-content>

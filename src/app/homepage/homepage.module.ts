@@ -1,0 +1,22 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
+
+import { HomepagePageRoutingModule } from './homepage-routing.module';
+
+import { HomepagePage } from './homepage.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; //1
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HomepagePageRoutingModule
+  ],
+  declarations: [HomepagePage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] //2
+})
+export class HomepagePageModule { }

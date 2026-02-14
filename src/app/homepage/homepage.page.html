@@ -1,0 +1,218 @@
+<!-- <ion-content [fullscreen]="true" class="main-content">
+
+  top navigation bar 
+  <div class="header-section">
+    <div class="header-content">
+      <div class="brand-section">
+        <img class="brand-icon" src="https://cdn-icons-png.flaticon.com/512/8847/8847419.png" alt="Logo">
+        <div class="brand-text">
+          <h1 class="brand-title">Food Delivery</h1>
+          <p class="brand-subtitle">Delicious food at your doorstep</p>
+        </div>
+      </div>
+
+      <ion-button class="cart-btn" fill="clear" (click)="NavigateToCart()">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge *ngIf="getCartItemCount() > 0" class="cart-badge">{{getCartItemCount()}}</ion-badge>
+      </ion-button>
+    </div>
+  </div>
+
+   search bar 
+  <div class="search-section">
+    <div class="search-container">
+      <ion-icon name="search-outline" class="search-icon"></ion-icon>
+      <input type="text" placeholder="Search for dishes..." class="search-input">
+    </div>
+  </div>
+
+   分类tag 
+  <div class="categories-section">
+    <h2 class="section-title">Categories</h2>
+
+    <div class="categories-scroll">
+      <div class="category-chip" *ngFor="let category of categories" [class.active]="category.active"
+        (click)="selectCategory(category)">
+        <ion-icon [name]="category.icon"></ion-icon>
+        <span>{{category.name}}</span>
+      </div>
+    </div>
+  </div>
+
+   热门推荐 
+  <div class="popular-section">
+    <div class="section-header">
+      <h2 class="section-title">Popular Dishes</h2>
+      <a class="view-all-link">View All →</a>
+    </div>
+  </div>
+
+   show product 
+  <div class="dishes-carousel">
+                   一面要show多少个card，   spacing,             排列，               default 是正中间  ，  给class名
+    <swiper-container [slidesPerView]="1.15" [spaceBetween]="16" [centeredSlides]="true" [loop]="false"
+      class="product-swiper">
+
+      <swiper-slide *ngFor="let product of ProductList">
+        <div class="product-card" (click)="NavigateToProductDetails(product.Id)">
+           product image container 
+          <div class="product-image-wrapper" [ngStyle]="{'background': product.BackgroundColor}">
+            <img [src]="product.Image" [alt]="product.ProductName" class="product-img">
+
+            <ion-button class="favorite-btn" fill="clear">
+              <ion-icon name="heart-outline"></ion-icon>
+            </ion-button>
+          </div>
+
+           product message 
+          <div class="product-info">
+            <h3 class="product-name">{{product.ProductName}}</h3>
+            <p class="product-description">{{product.Description}}</p>
+
+            <div class="product-footer">
+              <div class="price-section">
+                <span class="currency">$</span>
+                <span class="price">{{product.Price}}</span>
+              </div>
+
+              <ion-button class="add-btn" size="small">
+                <ion-icon name="add" slot="icon-only"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+
+    </swiper-container>
+  </div>
+
+   bottom navigation 
+  <div class="bottom-nav">
+    <div class="nav-item active">
+      <ion-icon name="home"></ion-icon>
+      <span>Home</span>
+    </div>
+
+    <div class="nav-item" (click)="NavigateToCart()">
+      <ion-icon name="cart"></ion-icon>
+      <span>Cart</span>
+      <ion-badge *ngIf="getCartItemCount() > 0" class="nav-badge">{{getCartItemCount()}}</ion-badge>
+    </div>
+
+    <div class="nav-item">
+      <ion-icon name="heart"></ion-icon>
+      <span>Favorites</span>
+    </div>
+
+    <div class="nav-item">
+      <ion-icon name="person"></ion-icon>
+      <span>Profile</span>
+    </div>
+  </div>
+
+</ion-content> -->
+
+
+<ion-content [fullscreen]="true" class="gradient-page">
+
+  <!-- search bar -->
+  <div class="search-section">
+    <div class="search-bar">
+      <ion-icon name="search-outline" class="search-icon"></ion-icon>
+
+      <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search for dishes..."
+        class="search-input">
+
+      <ion-button *ngIf="searchQuery" fill="clear" class="clear-btn" (click)="clearSearch()">
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- categories label -->
+  <div class="categories-section">
+    <h2 class="section-title">Categories</h2>
+    <div class="categories-scroll">
+      <div class="category-chip" *ngFor="let category of categories" [class.active]="category.name === selectedCategory"
+        (click)="filterByCategory(category.name)">
+
+        <ion-icon [name]="category.icon"></ion-icon>
+        <span>{{category.name}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- popular menu title -->
+  <div class="popular-header">
+    <h2 class="section-title">Popular Dishes</h2>
+    <button class="view-all-btn" (click)="viewAllDishes()">
+      View All →
+    </button>
+  </div>
+
+  <!-- products card list -->
+  <div class="dishes-grid">
+    <div class="dish-card" *ngFor="let product of filteredProducts" (click)="NavigateToProductDetails(product.Id)">
+
+      <!-- product image area -->
+      <div class="card-image-wrapper" [ngStyle]="{'background': product.BackgroundColor}">
+        <img [src]="product.Image" [alt]="product.ProductName" class="card-image">
+
+        <!-- favorite button -->
+        <button class="favorite-btn" (click)="toggleFavorite($event, product)" [class.active]="isFavorite(product.Id)">
+          <ion-icon [name]="isFavorite(product.Id) ? 'heart' : 'heart-outline'"></ion-icon>
+        </button>
+      </div>
+
+      <!-- product info -->
+      <div class="card-info">
+        <h3 class="product-name">{{product.ProductName}}</h3>
+        <p class="product-desc">{{product.Description}}</p>
+
+        <div class="card-footer">
+          <div class="price-info">
+            <span class="price-label">Price:</span>
+            <span class="price-value">${{product.Price}}</span>
+          </div>
+
+          <button class="add-cart-btn" (click)="quickAddToCart($event, product)">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No search results -->
+  <div class="no-results" *ngIf="filteredProducts.length === 0">
+    <ion-icon name="search-outline"></ion-icon>
+    <p>No dishes found</p>
+    <button class="reset-btn" (click)="resetFilters()">Reset Filters</button>
+  </div>
+
+  <!-- Bottom navigation -->
+  <div class="bottom-nav">
+    <div class="nav-item active" (click)="navigateTo('home')">
+      <ion-icon name="home"></ion-icon>
+      <span>Home</span>
+    </div>
+
+    <div class="nav-item" (click)="navigateTo('cart')">
+      <ion-icon name="cart"></ion-icon>
+      <span>Cart</span>
+      <ion-badge *ngIf="getCartCount() > 0" class="nav-badge">{{getCartCount()}}</ion-badge>
+    </div>
+
+    <div class="nav-item" (click)="navigateTo('favorites')">
+      <ion-icon name="heart"></ion-icon>
+      <span>Favorites</span>
+      <ion-badge *ngIf="getFavoritesCount() > 0" class="nav-badge">{{getFavoritesCount()}}</ion-badge>
+    </div>
+
+    <div class="nav-item" (click)="navigateTo('profile')">
+      <ion-icon name="person"></ion-icon>
+      <span>Profile</span>
+    </div>
+  </div>
+
+</ion-content>

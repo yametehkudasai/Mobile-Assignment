@@ -1,0 +1,108 @@
+<ion-content [fullscreen]="true" class="gradient-register-page">
+
+  <div class="floating-circles">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <div class="food-patterns">
+    <ion-icon name="pizza-outline" class="food-icon"></ion-icon>
+    <ion-icon name="fast-food-outline" class="food-icon"></ion-icon>
+    <ion-icon name="ice-cream-outline" class="food-icon"></ion-icon>
+    <ion-icon name="restaurant-outline" class="food-icon"></ion-icon>
+  </div>
+
+  <div class="grid-pattern"></div>
+  <div class="light-beams"></div>
+
+  <!-- Logo和header -->
+  <div class="header-section">
+    <div class="logo-wrapper">
+      <ion-icon name="person-add" class="logo-icon"></ion-icon>
+    </div>
+    <h1 class="welcome-title">Create Account</h1>
+    <p class="welcome-subtitle">Join us today!</p>
+  </div>
+
+  <!-- register form -->
+  <div class="form-card">
+
+    <!-- Name input -->
+    <div class="input-group">
+      <label class="input-label">Full Name</label>
+      <div class="input-wrapper">
+        <ion-icon name="person-outline" class="input-icon"></ion-icon>
+        <input type="text" [(ngModel)]="name" placeholder="Enter your name" class="custom-input">
+      </div>
+    </div>
+
+    <!-- Email input -->
+    <div class="input-group">
+      <label class="input-label">Email</label>
+      <div class="input-wrapper">
+        <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+        <input type="email" [(ngModel)]="email" placeholder="Enter your email" class="custom-input">
+      </div>
+    </div>
+
+    <!-- Password input -->
+    <div class="input-group">
+      <label class="input-label">Password</label>
+      <div class="input-wrapper">
+        <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+        <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="Enter password"
+          class="custom-input">
+        <ion-icon [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" class="toggle-password-icon"
+          (click)="togglePasswordVisibility()"></ion-icon>
+      </div>
+    </div>
+
+    <!-- Confirm Password input -->
+    <div class="input-group">
+      <label class="input-label">Confirm Password</label>
+      <div class="input-wrapper">
+        <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+        <input [type]="showConfirmPassword ? 'text' : 'password'" [(ngModel)]="confirmPassword"
+          placeholder="Confirm password" class="custom-input" (keyup.enter)="register()">
+        <ion-icon [name]="showConfirmPassword ? 'eye-outline' : 'eye-off-outline'" class="toggle-password-icon"
+          (click)="toggleConfirmPasswordVisibility()"></ion-icon>
+      </div>
+    </div>
+
+    <!-- register btn -->
+    <button class="register-btn" (click)="register()">
+      <span>Sign Up</span>
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+
+    <!-- 分隔线 -->
+    <div class="divider-section">
+      <div class="divider-line"></div>
+      <span class="divider-text">or</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- social login -->
+    <div class="social-login-section">
+      <button class="social-btn google-btn" (click)="socialRegister('google')">
+        <ion-icon name="logo-google"></ion-icon>
+        <span>Google</span>
+      </button>
+      <button class="social-btn apple-btn" (click)="socialRegister('apple')">
+        <ion-icon name="logo-apple"></ion-icon>
+        <span>Apple</span>
+      </button>
+    </div>
+
+    <!-- sign in link -->
+    <div class="signin-section">
+      <span class="signin-text">Already have an account?</span>
+      <a class="signin-link" (click)="goToLogin()">Sign In</a>
+    </div>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true" class="gradient-favorites-page">
+
+  <!-- top navigation -->
+  <div class="favorites-header-gradient">
+    <button class="header-btn" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+
+    <h1 class="header-title">My Favorites</h1>
+
+    <button class="header-btn" (click)="clearFavorites()" *ngIf="favoritesList.length > 0">
+      <ion-icon name="trash-outline"></ion-icon>
+    </button>
+  </div>
+
+  <!-- empty status -->
+  <div class="empty-state" *ngIf="favoritesList.length === 0">
+    <div class="empty-icon-circle">
+      <ion-icon name="heart-outline"></ion-icon>
+    </div>
+
+    <h2 class="empty-title">No favorites yet</h2>
+    <p class="empty-subtitle">Start adding your favorite dishes!</p>
+    <button class="browse-menu-btn" (click)="goBack()">Browse Menu</button>
+  </div>
+
+  <!-- favorites grid -->
+  <div class="favorites-grid" *ngIf="favoritesList.length > 0">
+    <div class="favorite-card" *ngFor="let product of favoritesList">
+
+      <!-- product image area -->
+      <div class="card-image-wrapper" [ngStyle]="{'background': product.BackgroundColor}"
+        (click)="navigateToProduct(product.Id)">
+        <img [src]="product.Image" [alt]="product.ProductName" class="card-image">
+
+        <!-- remove favorite button -->
+        <button class="remove-favorite-btn" (click)="removeFavorite($event, product.Id)">
+          <ion-icon name="heart-dislike"></ion-icon>
+        </button>
+      </div>
+
+      <!-- product info -->
+      <div class="card-info">
+        <h3 class="product-name">{{product.ProductName}}</h3>
+        <p class="product-desc">{{product.Description}}</p>
+
+        <div class="card-actions">
+          <div class="price-section">
+            <span class="price-label">Price:</span>
+            <span class="price-value">${{product.Price}}</span>
+          </div>
+
+          <button class="add-to-cart-btn" (click)="addToCart($event, product)">
+            <ion-icon name="cart-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

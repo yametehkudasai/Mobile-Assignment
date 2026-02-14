@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <div style="padding: 40px 20px;">
+    <div class="step1progressbar stepbtn"></div>
+    <div class="step2progressbar stepbtn" [class.active]="currentStep === 2 || currentStep === 3"></div>
+    <div class="step3progressbar stepbtn" [class.active]="currentStep === 3"></div>
+
+    <ion-progress-bar [value]="progress" class="ProgressBar"></ion-progress-bar>
+  </div>
+
+  <div class="AddressInformationSession step step-1" [class.active]="currentStep === 1">
+    <h1>Address</h1>
+    <ion-button (click)="next()"
+      style="display: flex; --background: purple; margin: 0px 50px; --border-radius: 25px;">Continue</ion-button>
+  </div>
+
+  <div class="CheckoutSession step step-2" [class.active]="currentStep === 2">
+    <h1>Checkout</h1>
+    <ion-button (click)="next()"
+      style="display: flex; --background: purple; margin: 0px 50px; --border-radius: 25px;">Checkout</ion-button>
+  </div>
+
+  <div class="PaymentMethodSession step step-3" [class.active]="currentStep === 3">
+    <h1>Payment Method</h1>
+    <ion-button (click)="prev()"
+      style="display: flex; --background: purple; margin: 0px 50px; --border-radius: 25px;">Payment</ion-button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-tabs>
+
+  <ion-router-outlet></ion-router-outlet>
+
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="home" href="/homepage">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-button style="--border-radius: 50%; width: 60px; height: 60px; transform: scale(5);"
+      (click)="onFabClick()">Click Me</ion-button>
+
+    <ion-tab-button tab="cartbutton" href="/tabs/cartbutton">
+      <ion-icon name="cart"></ion-icon>
+      <ion-label>Cart</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>

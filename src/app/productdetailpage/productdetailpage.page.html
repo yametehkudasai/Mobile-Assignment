@@ -1,0 +1,94 @@
+<ion-content [fullscreen]="true" class="gradient-detail-page" *ngIf="filteritem">
+
+  <!-- 顶部图片area -->
+  <div class="hero-gradient-section"
+    [ngStyle]="{'background': 'linear-gradient(180deg, ' + filteritem.BackgroundColor + ' 0%, ' + darkenColor(filteritem.BackgroundColor) + ' 100%)'}">
+
+    <!-- 顶部button -->
+    <div class="top-actions">
+      <button class="action-btn back-btn" (click)="linkHomePage()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+
+      <button class="action-btn fav-btn" [class.active]="isFavorite" (click)="toggleFavorite()">
+        <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline'"></ion-icon>
+      </button>
+    </div>
+
+    <!-- product image -->
+    <div class="product-showcase">
+      <img [src]="filteritem.Image" [alt]="filteritem.ProductName" class="showcase-image">
+    </div>
+
+    <!-- price label -->
+    <div class="price-badge">
+      <span class="badge-label">Price</span>
+      <span class="badge-amount">${{filteritem.Price}}</span>
+    </div>
+  </div>
+
+  <!-- product info card -->
+  <div class="info-white-card">
+
+    <!-- title & reviews -->
+    <div class="title-rating-section">
+      <h1 class="product-title">{{filteritem.ProductName}}</h1>
+      <div class="rating-box">
+        <ion-icon name="star" class="star-icon"></ion-icon>
+        <span class="rating-value">4.8</span>
+        <span class="review-count">(120+ reviews)</span>
+      </div>
+    </div>
+
+    <!-- description -->
+    <div class="detail-section">
+      <h3 class="detail-heading">Description</h3>
+      <p class="detail-text">{{filteritem.Description}}</p>
+    </div>
+
+    <!-- Ingredients -->
+    <div class="detail-section">
+      <h3 class="detail-heading">Ingredients</h3>
+      <div class="ingredients-tags">
+        <div class="ingredient-item" *ngFor="let ingredient of getIngredients()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+          <span>{{ingredient}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- quantity selector -->
+    <div class="detail-section">
+      <h3 class="detail-heading">Quantity</h3>
+      <div class="quantity-selector-box">
+        <button class="qty-action-btn" (click)="decreaseQuantity()">
+          <ion-icon name="remove"></ion-icon>
+        </button>
+
+        <div class="qty-number">{{quantity}}</div>
+
+        <button class="qty-action-btn" (click)="increaseQuantity()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- bottom fixed bar -->
+  <div class="bottom-fixed-bar">
+    <div class="total-price-info">
+      <span class="total-label">Total Price</span>
+      <div class="total-amount">
+        <span class="currency">$</span>
+        <span class="amount">{{getTotalPrice()}}</span>
+      </div>
+    </div>
+
+    <button class="add-to-cart-button" (click)="addtocart()">
+      <ion-icon name="cart-outline"></ion-icon>
+      <span>Add to Cart</span>
+    </button>
+  </div>
+
+</ion-content>

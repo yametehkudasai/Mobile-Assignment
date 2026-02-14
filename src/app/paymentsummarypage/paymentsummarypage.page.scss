@@ -1,0 +1,76 @@
+.AddressInformationSession {
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
+}
+
+.CheckoutSession {
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
+}
+
+.PaymentMethodSession {
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
+}
+
+.step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transform: translateX(100%);
+}
+
+.step.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+ion-button {
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    width: 55%;
+}
+
+.step1progressbar {
+    top: 2.5%;
+    left: 0;
+    background-color: lightgray;
+}
+
+.step2progressbar {
+    top: 2.5%;
+    left: 44.5%;
+    background-color: lightgray;
+}
+
+.step3progressbar {
+    top: 2.5%;
+    left: 89%;
+    background-color: lightgray;
+}
+
+.stepbtn {
+    position: absolute;
+    width: 11%;
+    height: 5%;
+    border: 1px solid black;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.ProgressBar {
+    position: absolute;
+    width: 90%;
+    height: 1%;
+    top: 5%;
+}

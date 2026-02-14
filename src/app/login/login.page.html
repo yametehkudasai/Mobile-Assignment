@@ -1,0 +1,101 @@
+<ion-content [fullscreen]="true" class="gradient-login-page">
+
+  <!-- 漂浮的圆圈 -->
+  <div class="floating-circles">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <!-- food image 装饰 -->
+  <div class="food-patterns">
+    <ion-icon name="pizza-outline" class="food-icon"></ion-icon>
+    <ion-icon name="fast-food-outline" class="food-icon"></ion-icon>
+    <ion-icon name="ice-cream-outline" class="food-icon"></ion-icon>
+    <ion-icon name="restaurant-outline" class="food-icon"></ion-icon>
+  </div>
+
+  <!-- 网格线 -->
+  <div class="grid-pattern"></div>
+
+  <!-- 光束effect -->
+  <div class="light-beams"></div>
+
+  <!-- Logo和welcome text -->
+  <div class="header-section">
+    <div class="logo-wrapper">
+      <ion-icon name="restaurant" class="logo-icon"></ion-icon>
+    </div>
+    <h1 class="welcome-title">Welcome Back!</h1>
+    <p class="welcome-subtitle">Sign in to continue</p>
+  </div>
+
+  <!-- login form -->
+  <div class="form-card">
+
+    <!-- Email input -->
+    <div class="input-group">
+      <label class="input-label">Email</label>
+      <div class="input-wrapper">
+        <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+        <input type="email" [(ngModel)]="email" placeholder="Enter your email" class="custom-input"
+          (keyup.enter)="login()">
+      </div>
+    </div>
+
+    <!-- Password input -->
+    <div class="input-group">
+      <label class="input-label">Password</label>
+      <div class="input-wrapper">
+        <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+
+        <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="Enter your password"
+          class="custom-input" (keyup.enter)="login()">
+
+        <ion-icon [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" class="toggle-password-icon"
+          (click)="togglePasswordVisibility()"></ion-icon>
+      </div>
+    </div>
+
+    <!-- forgot password -->
+    <div class="forgot-password-section">
+      <a class="forgot-link" (click)="forgotPassword()">Forgot Password?</a>
+    </div>
+
+    <!-- login btn -->
+    <button class="login-btn" (click)="login()">
+      <span>Sign In</span>
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+
+    <!-- 分隔线 -->
+    <div class="divider-section">
+      <div class="divider-line"></div>
+      <span class="divider-text">or</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- social login -->
+    <div class="social-login-section">
+      <button class="social-btn google-btn" (click)="socialLogin('google')">
+        <ion-icon name="logo-google"></ion-icon>
+        <span>Google</span>
+      </button>
+
+      <button class="social-btn apple-btn" (click)="socialLogin('apple')">
+        <ion-icon name="logo-apple"></ion-icon>
+        <span>Apple</span>
+      </button>
+    </div>
+
+    <!-- signup link -->
+    <div class="signup-section">
+      <span class="signup-text">Don't have an account?</span>
+      <a class="signup-link" (click)="goToRegister()">Sign Up</a>
+    </div>
+
+  </div>
+
+</ion-content>

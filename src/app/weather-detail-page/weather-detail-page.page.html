@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{LocationName}} Weather Forecast</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- <ion-list>
+    <ion-item *ngFor="let pair of FilterList">
+      <ion-card>
+        {{pair.location.location_name}}
+      </ion-card>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let pair of FilterList">
+      <ion-item slot="header" color="light">
+        <ion-label>{{pair.date}}</ion-label>
+      </ion-item>
+
+      <div class="ion-padding" slot="content">
+        <h1>Morning: {{pair.morning_forecast}}</h1>
+        <h1>Afternoon: {{pair.afternoon_forecast}}</h1>
+        <h1>Night: {{pair.night_forecast}}</h1>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>

@@ -1,0 +1,666 @@
+// ==========================================
+// Login Page 
+// ==========================================
+
+$gradient-top: #FF6B9D;
+$gradient-middle: #C44569;
+$gradient-bottom: #7B3F61;
+$text-dark: #2C1810;
+$text-light: #FFFFFF;
+$text-gray: #8B7E74;
+
+.gradient-register-page {
+    --background: linear-gradient(180deg,
+        #{$gradient-top} 0%,
+        #{$gradient-middle} 50%,
+        #{$gradient-bottom} 100%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+
+    // ==========================================
+
+    // 第1层：大型光圈 (右上)
+    &::before {
+        content: '';
+        position: absolute;
+        top: -20%;
+        right: -15%;
+        width: 60%;
+        height: 60%;
+        background: radial-gradient(circle,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.08) 30%,
+                transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+        animation: pulse 8s ease-in-out infinite;
+    }
+
+    // 第2层：大型光圈 (左下)
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -20%;
+        left: -15%;
+        width: 60%;
+        height: 60%;
+        background: radial-gradient(circle,
+                rgba(0, 0, 0, 0.1) 0%,
+                rgba(0, 0, 0, 0.05) 30%,
+                transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+        animation: pulse 8s ease-in-out infinite reverse;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+// 第3层：漂浮的圆圈 decorative
+.floating-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    animation: float-up 15s ease-in-out infinite;
+
+    &:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+        animation-duration: 12s;
+    }
+
+    &:nth-child(2) {
+        width: 120px;
+        height: 120px;
+        top: 60%;
+        right: 15%;
+        animation-delay: 2s;
+        animation-duration: 14s;
+    }
+
+    &:nth-child(3) {
+        width: 60px;
+        height: 60px;
+        top: 30%;
+        right: 25%;
+        animation-delay: 4s;
+        animation-duration: 10s;
+    }
+
+    &:nth-child(4) {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 1s;
+        animation-duration: 13s;
+    }
+
+    &:nth-child(5) {
+        width: 70px;
+        height: 70px;
+        top: 50%;
+        left: 30%;
+        animation-delay: 3s;
+        animation-duration: 11s;
+    }
+}
+
+@keyframes float-up {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+        opacity: 0.6;
+    }
+}
+
+// 第4层：food icons pattern
+.food-patterns {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.1;
+}
+
+.food-icon {
+    position: absolute;
+    font-size: 40px;
+    color: white;
+    animation: rotate-slow 20s linear infinite;
+
+    &:nth-child(1) {
+        top: 15%;
+        left: 15%;
+        animation-delay: 0s;
+    }
+
+    &:nth-child(2) {
+        top: 25%;
+        right: 20%;
+        animation-delay: 2s;
+    }
+
+    &:nth-child(3) {
+        bottom: 30%;
+        left: 25%;
+        animation-delay: 4s;
+    }
+
+    &:nth-child(4) {
+        bottom: 20%;
+        right: 15%;
+        animation-delay: 1s;
+    }
+}
+
+@keyframes rotate-slow {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+// 第5层：grid pattern
+.grid-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+// 第6层：光束effect
+.light-beams {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%),
+        linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: rotate-beam 30s linear infinite;
+}
+
+@keyframes rotate-beam {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// ==========================================
+// Header Section 
+// ==========================================
+.header-section {
+    text-align: center;
+    margin-bottom: 24px;
+    animation: slideDown 0.6s ease-out;
+    position: relative;
+    z-index: 10;
+}
+
+.logo-wrapper {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 16px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo-icon {
+    font-size: 36px;
+    color: $text-light;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.welcome-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-light;
+    margin: 0 0 6px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-subtitle {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ==========================================
+// Form Card 
+// ==========================================
+.form-card {
+    background: linear-gradient(180deg,
+            rgba(255, 229, 236, 0.95) 0%,
+            rgba(255, 245, 248, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    border-radius: 28px;
+    padding: 28px 22px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    animation: slideUp 0.6s ease-out 0.2s both;
+    position: relative;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    // card 内部decorative
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg,
+                transparent,
+                $gradient-middle,
+                $gradient-top,
+                transparent);
+        border-radius: 28px 28px 0 0;
+    }
+
+    // card 光泽 effect
+    &::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        height: 40%;
+        background: linear-gradient(180deg,
+                rgba(255, 255, 255, 0.4) 0%,
+                transparent 100%);
+        border-radius: 20px;
+        pointer-events: none;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ==========================================
+// Input Groups 
+// ==========================================
+.input-group {
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.input-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: $text-dark;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 14px;
+    padding: 0 14px;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+
+    &:focus-within {
+        border-color: $gradient-middle;
+        box-shadow:
+            0 4px 16px rgba(196, 69, 105, 0.25),
+            0 0 0 3px rgba(196, 69, 105, 0.1);
+        transform: translateY(-2px);
+    }
+}
+
+.input-icon {
+    font-size: 20px;
+    color: $text-gray;
+    margin-right: 10px;
+}
+
+.custom-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 0;
+    font-size: 15px;
+    color: $text-dark;
+    background: transparent;
+
+    &::placeholder {
+        color: $text-gray;
+    }
+}
+
+.toggle-password-icon {
+    font-size: 20px;
+    color: $text-gray;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: all 0.2s ease;
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+// ==========================================
+// Forgot Password
+// ==========================================
+.forgot-password-section {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgot-link {
+    font-size: 13px;
+    color: $gradient-middle;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:active {
+        opacity: 0.7;
+    }
+}
+
+// ==========================================
+// Login Button
+// ==========================================
+.register-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, $gradient-middle, $gradient-top);
+    border: none;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow:
+        0 4px 16px rgba(196, 69, 105, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    // btn光泽
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent);
+        transition: left 0.5s ease;
+    }
+
+    &:hover::before {
+        left: 100%;
+    }
+
+    span {
+        font-size: 16px;
+        font-weight: 700;
+        color: white;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 1;
+    }
+
+    ion-icon {
+        font-size: 20px;
+        color: white;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        position: relative;
+        z-index: 1;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+// ==========================================
+// Divider
+// ==========================================
+.divider-section {
+    display: flex;
+    align-items: center;
+    margin: 18px 0;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 0, 0, 0.1),
+            transparent);
+}
+
+.divider-text {
+    padding: 0 14px;
+    font-size: 13px;
+    color: $text-gray;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+// ==========================================
+// Social Login
+// ==========================================
+.social-login-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 11px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    ion-icon {
+        font-size: 20px;
+    }
+
+    span {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    &.google-btn {
+        ion-icon {
+            color: #DB4437;
+        }
+
+        span {
+            color: #DB4437;
+        }
+
+        &:hover {
+            border-color: #DB4437;
+            box-shadow: 0 4px 12px rgba(219, 68, 55, 0.2);
+        }
+    }
+
+    &.apple-btn {
+        ion-icon {
+            color: #000000;
+        }
+
+        span {
+            color: #000000;
+        }
+
+        &:hover {
+            border-color: #000000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    &:active {
+        transform: scale(0.97);
+    }
+}
+
+// ==========================================
+// Sign Up Section
+// ==========================================
+.signin-section {
+    text-align: center;
+}
+
+.signin-text {
+    font-size: 13px;
+    color: $text-gray;
+}
+
+.signin-link {
+    font-size: 13px;
+    color: $gradient-middle;
+    font-weight: 700;
+    margin-left: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:active {
+        opacity: 0.7;
+    }
+}
+
+// ==========================================
+// Responsive
+// ==========================================
+@media (min-width: 768px) {
+    .form-card {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+}
+
+ion-button {
+    text-transform: none;
+}

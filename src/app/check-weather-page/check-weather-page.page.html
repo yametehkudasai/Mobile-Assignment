@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>CheckWeatherPage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let pair of uniqueList">
+
+      <ion-card style="width: 100%; padding: 10%;">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="8">
+              <h1>{{pair.location.location_name}}</h1>
+            </ion-col>
+
+            <ion-col size="3">
+              <ion-button (click)="WeatherDetailsPage(pair.location.location_name)">Check Weather Details</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>
