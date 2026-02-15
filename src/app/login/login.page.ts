@@ -23,10 +23,25 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    // 清空form data
+    this.clearForm();
+
     // 如果已经login，直接去到homepage
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/homepage']);
     }
+  }
+
+  // 每次进入page时清空form data
+  ionViewWillEnter() {
+    this.clearForm();
+  }
+
+  // 清空form data
+  clearForm() {
+    this.email = '';
+    this.password = '';
+    this.showPassword = false;
   }
 
   // login
@@ -48,6 +63,9 @@ export class LoginPage implements OnInit {
 
     if (result.success) {
       await this.showToast('Welcome back!', 'success');
+
+      // 清空form data
+      this.clearForm();
 
       // 如果是admin，去到account list page，否则去homepage
       if (this.authService.isAdmin()) {

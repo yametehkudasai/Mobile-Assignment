@@ -29,7 +29,15 @@ export class ProfilePage implements OnInit {
     this.loadProfile();
   }
 
+  // 每次进入page时重新loading
   ionViewWillEnter() {
+    // 强制从localStorage重新loading data
+    this.authService.reloadData();
+    
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return;
+    }
     this.loadProfile();
   }
 

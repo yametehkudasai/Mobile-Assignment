@@ -32,7 +32,7 @@ export class AuthService {
   private userCarts: { [userId: string]: any[] } = {};
   private userFavorites: { [userId: string]: any[] } = {};
 
-  //admin account
+  // 固定的admin account
   private readonly ADMIN_EMAIL = 'admin@foodapp.com';
   private readonly ADMIN_PASSWORD = 'admin123';
 
@@ -41,7 +41,7 @@ export class AuthService {
     this.ensureAdminExists();
   }
 
-  // 确保admin account 存在
+  // 确保admin account存在
   private ensureAdminExists() {
     const adminExists = this.users.find(u => u.email === this.ADMIN_EMAIL);
     if (!adminExists) {
@@ -88,7 +88,7 @@ export class AuthService {
       address: '',
       avatar: this.getRandomAvatar(),
       createdAt: new Date(),
-      isAdmin: false //普通user
+      isAdmin: false
     };
 
     this.users.push(newUser);
@@ -129,7 +129,7 @@ export class AuthService {
     return this.currentUser !== null;
   }
 
-  // 检查是不是admin
+  // check是不是admin
   isAdmin(): boolean {
     return this.currentUser?.isAdmin === true;
   }
@@ -221,7 +221,7 @@ export class AuthService {
     return { success: true, message: 'Password reset successfully' };
   }
 
-  // 检查email是否存在
+  // check email是否存在
   checkEmailExists(email: string): boolean {
     return this.users.some(u => u.email.toLowerCase() === email.toLowerCase());
   }
@@ -258,6 +258,11 @@ export class AuthService {
     if (!this.currentUser) return;
     this.userFavorites[this.currentUser.id] = [];
     this.saveData();
+  }
+
+  // 强制重新load data
+  reloadData() {
+    this.loadData();
   }
 
   private generateId(): string {

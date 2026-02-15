@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
+import { AuthService } from '../Database/auth.service';
 
 interface AccountDisplay {
   id: string;
@@ -28,10 +29,18 @@ export class AccountListPage implements OnInit {
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.loadAccounts();
+  }
+
+  // 每次进入page时重新loading
+  ionViewWillEnter() {
+    // 强制从localStorage重新loading data
+    this.authService.reloadData();
     this.loadAccounts();
   }
 
@@ -86,6 +95,8 @@ export class AccountListPage implements OnInit {
         {
           text: 'Switch',
           handler: () => {
+            // 更新当前users
+            localStorage.setItem('currentUser', JSON.stringify(account));
             // update当前users
             localStorage.setItem('currentUser', JSON.stringify(account));
             this.showToast(`Switched to ${account.name}`, 'success');
@@ -144,12 +155,16 @@ export class AccountListPage implements OnInit {
         const currentUser = JSON.parse(currentUserData);
         if (currentUser.id === accountId) {
           localStorage.removeItem('currentUser');
+          // 🔥 重新laod AuthService data
+          this.authService.reloadData();
           this.showToast('Current user deleted. Please login again.', 'warning');
           this.router.navigate(['/login']);
           return;
         }
       }
 
+      // 重新reload AuthService data
+      this.authService.reloadData();
       this.showToast('Account deleted successfully', 'success');
       this.loadAccounts();
     }
@@ -169,7 +184,7 @@ export class AccountListPage implements OnInit {
       }
     }
 
-    // c;lear favorites
+    // clear favorites
     const favoritesData = localStorage.getItem('userFavorites');
     if (favoritesData) {
       try {
