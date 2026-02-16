@@ -1,13 +1,125 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>transaction-history</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="gradient-transaction-page">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">transaction-history</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Background Design -->
+  <div class="floating-circles">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <div class="food-patterns">
+    <ion-icon name="pizza-outline" class="food-icon"></ion-icon>
+    <ion-icon name="fast-food-outline" class="food-icon"></ion-icon>
+    <ion-icon name="ice-cream-outline" class="food-icon"></ion-icon>
+    <ion-icon name="restaurant-outline" class="food-icon"></ion-icon>
+  </div>
+
+  <div class="grid-pattern"></div>
+  <div class="light-beams"></div>
+
+  <!-- Header -->
+  <div class="header-bar">
+    <button class="back-btn" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+
+    <h1 class="header-title">Transaction History</h1>
+
+    <div class="header-spacer"></div>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <ion-segment [(ngModel)]="selectedFilter" (ionChange)="onFilterChange($event)" mode="ios">
+      <ion-segment-button value="all">
+        <ion-label>All</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="completed">
+        <ion-label>Completed</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="pending">
+        <ion-label>Pending</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="cancelled">
+        <ion-label>Cancelled</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="filteredTransactions.length === 0">
+    <ion-icon name="receipt-outline" class="empty-icon"></ion-icon>
+    <h2>No Transactions Found</h2>
+    <p>You haven't made any orders yet</p>
+
+    <button class="action-btn primary-btn" (click)="goBack()">
+      <ion-icon name="home-outline"></ion-icon>
+      <span>Start Shopping</span>
+    </button>
+  </div>
+
+  <!-- Transaction List -->
+  <div class="transactions-list" *ngIf="filteredTransactions.length > 0">
+    <div class="transaction-card" *ngFor="let transaction of filteredTransactions"
+      (click)="viewTransactionDetail(transaction)">
+
+      <!-- Transaction Header -->
+      <div class="transaction-header">
+        <div class="transaction-info">
+          <h3 class="transaction-id">Order #{{transaction.id.slice(-8)}}</h3>
+          <p class="transaction-date">
+            {{formatDate(transaction.date)}} · {{formatTime(transaction.date)}}
+          </p>
+        </div>
+        <ion-badge [color]="getStatusColor(transaction.status)" class="status-badge">
+          {{transaction.status | titlecase}}
+        </ion-badge>
+      </div>
+
+      <!-- Transaction Items -->
+      <div class="transaction-items">
+        <div class="item-row" *ngFor="let item of transaction.items.slice(0, 2)">
+          <img [src]="item.Image" alt="{{item.ProductName}}" class="item-image">
+          <div class="item-details">
+            <p class="item-name">{{item.ProductName}}</p>
+            <p class="item-quantity">Qty: {{item.Quantity}}</p>
+          </div>
+          <p class="item-price">${{item.Price * item.Quantity | number:'1.2-2'}}</p>
+        </div>
+
+        <!-- Show more indicator -->
+        <p class="more-items" *ngIf="transaction.items.length > 2">
+          + {{transaction.items.length - 2}} more items
+        </p>
+      </div>
+
+      <!-- Transaction Footer -->
+      <div class="transaction-footer">
+        <div class="footer-info">
+          <ion-icon name="card-outline"></ion-icon>
+          <span>{{transaction.paymentMethod}}</span>
+        </div>
+
+        <div class="footer-info">
+          <ion-icon name="cube-outline"></ion-icon>
+          <span>{{getItemCount(transaction)}} items</span>
+        </div>
+
+        <div class="footer-total">
+          <span class="total-label">Total:</span>
+          <span class="total-amount">${{transaction.total | number:'1.2-2'}}</span>
+        </div>
+      </div>
+
+      <!-- View Details Button -->
+      <div class="view-details">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </div>
+
+    </div>
+  </div>
+
 </ion-content>
