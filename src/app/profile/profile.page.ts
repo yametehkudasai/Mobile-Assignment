@@ -33,7 +33,7 @@ export class ProfilePage implements OnInit {
   ionViewWillEnter() {
     // 强制从localStorage重新loading data
     this.authService.reloadData();
-    
+
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/login']);
       return;
@@ -96,6 +96,10 @@ export class ProfilePage implements OnInit {
     this.authService.updateAvatar(avatar);
     this.loadProfile();
     this.showToast('Avatar updated successfully', 'success');
+  }
+
+  viewTransactionHistory() {
+    this.router.navigate(['/transaction-history']);
   }
 
   async editProfile() {
