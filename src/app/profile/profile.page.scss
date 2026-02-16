@@ -302,6 +302,23 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 // ==========================================
+// history btn
+// ==========================================
+.history-btn {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+
+  ion-icon {
+    color: white;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// ==========================================
 // Avatar Section
 // ==========================================
 .avatar-section {
