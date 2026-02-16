@@ -98,7 +98,7 @@ export class AccountListPage implements OnInit {
             // 更新当前users
             localStorage.setItem('currentUser', JSON.stringify(account));
             // update当前users
-            localStorage.setItem('currentUser', JSON.stringify(account));
+            this.authService.reloadData();
             this.showToast(`Switched to ${account.name}`, 'success');
             this.router.navigate(['/homepage']);
           }
