@@ -156,21 +156,21 @@ export class AccountListPage implements OnInit {
 
         // 如果delete的是current user
         if (currentUser.id === accountId) {
-          
+
           // 如果当前user是admin，不需要logout，继续check list
           if (currentUser.isAdmin) {
             // admin delete自己的情况（照理讲是不会，因为已filter）
             this.showToast('Cannot delete yourself while logged in', 'danger');
             return;
 
-          } else{
+          } else {
             // 普通users才需要logout
             localStorage.removeItem('currentUser');
-          // 重新laod AuthService data
-          this.authService.reloadData();
-          this.showToast('Current user deleted. Please login again.', 'warning');
-          this.router.navigate(['/login']);
-          return;
+            // 重新laod AuthService data
+            this.authService.reloadData();
+            this.showToast('Current user deleted. Please login again.', 'warning');
+            this.router.navigate(['/login']);
+            return;
           }
         }
       }
