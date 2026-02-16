@@ -162,6 +162,7 @@ export class AccountListPage implements OnInit {
             // 管理员删除自己的情况（理论上不会发生，因为已过滤）
             this.showToast('Cannot delete yourself while logged in', 'danger');
             return;
+            
           } else{
 
             localStorage.removeItem('currentUser');
