@@ -99,7 +99,7 @@
     }
 }
 
-// 食物图标装饰 - 更丰富的颜色和效果
+// food image decoration - 更丰富的颜色和effect
 .food-patterns {
     position: absolute;
     width: 100%;
@@ -143,7 +143,7 @@
     }
 }
 
-// 网格线 - 更明显的效果
+// 网格线
 .grid-pattern {
     position: absolute;
     width: 100%;
@@ -163,7 +163,7 @@
     opacity: 0.7;
 }
 
-// 光束效果 - 更强烈
+// 光束effect
 .light-beams {
     position: absolute;
     width: 300%;
@@ -180,7 +180,7 @@
 }
 
 // ========================================
-// 🎨 HEADER BAR - 玻璃态效果
+// HEADER BAR - 玻璃态effect
 // ========================================
 .header-bar {
     position: relative;
@@ -253,7 +253,7 @@
 }
 
 // ========================================
-// 🎨 FILTER SECTION - 增强渐变按钮
+// 🎨 FILTER SECTION - 渐变btn
 // ========================================
 .filter-section {
     position: relative;
@@ -286,7 +286,7 @@
             position: relative;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
-            // 未选中状态
+            // 未选中status
             &::before {
                 content: '';
                 position: absolute;
@@ -296,7 +296,7 @@
                 transition: all 0.3s;
             }
 
-            // 选中状态 - 渐变背景
+            // 选中status- 渐变background
             &.segment-button-checked {
                 --color-checked: white;
 
@@ -327,7 +327,7 @@
 }
 
 // ========================================
-// 🎨 EMPTY STATE - 丰富渐变
+// EMPTY STATE - 丰富渐变
 // ========================================
 .empty-state {
     position: relative;
@@ -392,7 +392,7 @@
         position: relative;
         overflow: hidden;
 
-        // 光泽效果
+        // 光泽effect
         &::before {
             content: '';
             position: absolute;
@@ -426,7 +426,7 @@
 }
 
 // ========================================
-// 🎨 TRANSACTION CARD - 玻璃态渐变卡片
+// TRANSACTION CARD - 玻璃态渐变card
 // ========================================
 .transactions-list {
     position: relative;
@@ -450,7 +450,7 @@
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.5);
 
-    // 卡片光晕效果
+    // card光晕effect
     &::before {
         content: '';
         position: absolute;
@@ -661,7 +661,7 @@
 }
 
 // ========================================
-// 🎨 ANIMATIONS - 更丰富的动画
+// ANIMATIONS
 // ========================================
 
 @keyframes pulse-glow {
@@ -743,7 +743,7 @@
 }
 
 // ========================================
-// 🎨 STATUS BADGE COLORS - 更鲜艳的颜色
+// STATUS BADGE COLORS
 // ========================================
 
 ion-badge {
@@ -764,7 +764,7 @@ ion-badge {
 }
 
 // ========================================
-// 🎨 RESPONSIVE ADJUSTMENTS
+// RESPONSIVE ADJUSTMENTS
 // ========================================
 
 @media (max-width: 360px) {
