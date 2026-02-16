@@ -191,4 +191,9 @@ export class HomepagePage implements OnInit {
     });
     await toast.present();
   }
+
+  // go to transaction History
+  goToTransactionHistory() {
+    this.router.navigate(['/transaction-history']);
+  }
 }
