@@ -63,6 +63,10 @@ const routes: Routes = [
     path: 'weather-detail-page',
     loadChildren: () => import('./weather-detail-page/weather-detail-page.module').then(m => m.WeatherDetailPagePageModule)
   },
+  {
+    path: 'transaction-history',
+    loadChildren: () => import('./transaction-history/transaction-history.module').then( m => m.TransactionHistoryPageModule)
+  },
 ];
 
 @NgModule({
