@@ -116,7 +116,7 @@ export class TransactionHistoryPage implements OnInit {
   }
 
   viewTransactionDetail(transaction: Transaction) {
-    // 可以导航到详细页面
+    // 可以nav到detail page
     this.showToast('Transaction detail view coming soon', 'primary');
   }
 
