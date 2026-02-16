@@ -178,7 +178,7 @@ export class AccountListPage implements OnInit {
       // admin delete 其他users后，保持在current page
       this.authService.reloadData();
       this.showToast('Account deleted successfully', 'success');
-      this.loadAccounts(); // 只refresh list, 不跳转
+      this.loadAccounts(); // 只refresh list, 不跳转 （没有 break, continue 之类的）
     }
   }
 
