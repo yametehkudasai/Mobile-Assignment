@@ -175,10 +175,10 @@ export class AccountListPage implements OnInit {
         }
       }
 
-      // 重新reload AuthService data
+      // admin delete 其他users后，保持在current page
       this.authService.reloadData();
       this.showToast('Account deleted successfully', 'success');
-      this.loadAccounts();
+      this.loadAccounts(); // 只refresh list, 不跳转
     }
   }
 
