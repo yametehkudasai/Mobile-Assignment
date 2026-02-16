@@ -13,6 +13,9 @@ $shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
 $shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
 $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 
+// ========================================
+// ENHANCED BACKGROUND
+// ========================================
 .gradient-page {
     --background: linear-gradient(180deg,
         #{$gradient-top} 0%,
@@ -20,6 +23,7 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
         #{$gradient-bottom} 100%);
     --padding-bottom: 90px;
 
+    // 增强background - 更多layer
     &::before {
         content: '';
         position: fixed;
@@ -28,13 +32,18 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
         right: 0;
         bottom: 0;
         background-image:
-            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.08) 0%, transparent 60%);
         pointer-events: none;
         z-index: 0;
+        animation: subtle-pulse 10s ease-in-out infinite;
     }
 }
 
+// ========================================
+// SEARCH SECTION - 增强玻璃态
+// ========================================
 .search-section {
     padding: 20px 16px 16px;
     position: relative;
@@ -42,24 +51,54 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .search-bar {
-    background: linear-gradient(135deg, #FFE5EC, #FFF0F5);
-    border-radius: 16px;
-    padding: 12px 16px;
+    background: linear-gradient(135deg, 
+        rgba(255, 229, 236, 0.95), 
+        rgba(255, 240, 245, 0.9)
+    );
+    border-radius: 20px;
+    padding: 14px 18px;
     display: flex;
     align-items: center;
     gap: 12px;
-    box-shadow: $shadow-md;
+    box-shadow: 
+        $shadow-md,
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+
+    // 添加光晕effect
+    &::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(135deg, 
+            rgba(255, 107, 157, 0.3),
+            rgba(255, 141, 161, 0.2)
+        );
+        border-radius: 20px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
+    }
 
     &:focus-within {
-        box-shadow: $shadow-lg, 0 0 0 3px rgba(255, 107, 157, 0.2);
+        box-shadow: 
+            $shadow-lg, 
+            0 0 0 4px rgba(255, 107, 157, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.7);
         transform: translateY(-2px);
+
+        &::before {
+            opacity: 1;
+        }
     }
 }
 
 .search-icon {
-    font-size: 22px;
+    font-size: 24px;
     color: $gradient-middle;
+    animation: pulse-icon 2s ease-in-out infinite;
 }
 
 .search-input {
@@ -69,6 +108,7 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
     font-size: 15px;
     color: $text-dark;
     background: transparent;
+    font-weight: 500;
 
     &::placeholder {
         color: $text-gray;
@@ -78,72 +118,189 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 .clear-btn {
     --color: #{$text-gray};
     margin: 0;
+    transition: transform 0.2s;
+
+    &:active {
+        transform: scale(0.9);
+    }
 }
 
+// ========================================
+// CATEGORIES SECTION - 丰富渐变
+// ========================================
 .categories-section {
     padding: 0 16px 20px;
     position: relative;
     z-index: 1;
+
+    // 添加玻璃态container background
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 8px;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0.05) 100%
+        );
+        backdrop-filter: blur(8px);
+        border-radius: 24px;
+        z-index: -1;
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
 }
 
 .section-title {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 800;
     color: $text-light;
-    margin: 0 0 16px 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0 0 18px 0;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.5px;
 }
 
 .categories-scroll {
     display: flex;
     gap: 12px;
     overflow-x: auto;
+    padding: 12px 4px;
+    scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
         display: none;
     }
 }
 
+// 丰富的category btn
 .category-chip {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
+    gap: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.15) 100%
+    );
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 24px;
     white-space: nowrap;
     cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+
+    // 光泽扫过effect
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+        );
+        transition: left 0.6s;
+    }
 
     ion-icon {
-        font-size: 18px;
+        font-size: 22px;
         color: $text-light;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        transition: all 0.3s;
     }
 
     span {
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 15px;
+        font-weight: 700;
         color: $text-light;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        letter-spacing: 0.3px;
     }
 
-    &.active {
-        background: linear-gradient(135deg, #FFE5EC, #FFF0F5);
-        border-color: transparent;
-        box-shadow: $shadow-md;
+    // Hover effect
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 
+            0 6px 20px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
-        ion-icon,
+        &::before {
+            left: 100%;
+        }
+
+        ion-icon {
+            transform: rotate(10deg) scale(1.15);
+        }
+    }
+
+    // 选中status - 流动渐变
+    &.active {
+        background: linear-gradient(
+            135deg,
+            #FF6B9D 0%,
+            #FF8DA1 20%,
+            #FFA8B8 40%,
+            #FFBAC8 60%,
+            #FF8DA1 80%,
+            #FF6B9D 100%
+        );
+        background-size: 300% 100%;
+        animation: gradient-flow 4s ease infinite;
+        border-color: transparent;
+        box-shadow: 
+            0 6px 24px rgba(255, 107, 157, 0.6),
+            0 0 0 4px rgba(255, 107, 157, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        transform: scale(1.05);
+
+        ion-icon {
+            color: white;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+            animation: icon-bounce 0.6s ease;
+        }
+
         span {
-            color: $gradient-middle;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        // 内部高光
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.4) 0%,
+                transparent 40%,
+                rgba(255, 255, 255, 0.2) 100%
+            );
+            pointer-events: none;
         }
     }
 
     &:active {
-        transform: scale(0.95);
+        transform: scale(0.96);
     }
 }
 
+// ========================================
+//  POPULAR HEADER
+// ========================================
 .popular-header {
     display: flex;
     justify-content: space-between;
@@ -154,18 +311,35 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .view-all-btn {
-    background: rgba(255, 255, 255, 0.25);
-    border: none;
-    padding: 8px 16px;
-    border-radius: 12px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    padding: 10px 18px;
+    border-radius: 16px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     color: $text-light;
     cursor: pointer;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 
     &:hover {
-        background: rgba(255, 255, 255, 0.35);
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.3) 100%
+        );
+        transform: translateY(-2px);
+        box-shadow: 
+            0 6px 16px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
     &:active {
@@ -173,10 +347,13 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 }
 
+// ========================================
+// 🎨 DISHES GRID - 增强卡片
+// ========================================
 .dishes-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 18px;
     padding: 0 16px 20px;
     position: relative;
     z-index: 1;
@@ -184,14 +361,25 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 
 .dish-card {
     background: linear-gradient(180deg, #FFE5EC 0%, #FFF5F8 100%);
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: $shadow-md;
-    transition: all 0.3s ease;
+    box-shadow: 
+        $shadow-md,
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+
+    // 🔥 悬浮效果
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 
+            0 12px 32px rgba(255, 107, 157, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
 
     &:active {
-        transform: scale(0.97);
+        transform: translateY(-3px) scale(0.98);
     }
 }
 
@@ -209,49 +397,57 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
     height: 140px;
     object-fit: contain;
     animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
 }
 
 @keyframes float {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0);
     }
-
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-10px);
     }
 }
 
 .favorite-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 36px;
-    height: 36px;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: none;
-    background: rgba(255, 229, 236, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 229, 236, 0.95),
+        rgba(255, 240, 245, 0.9)
+    );
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: $shadow-sm;
+    box-shadow: 
+        $shadow-sm,
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
     z-index: 10;
+    backdrop-filter: blur(10px);
 
     ion-icon {
-        font-size: 20px;
+        font-size: 22px;
         color: $text-gray;
+        transition: all 0.3s;
     }
 
     &.active {
-        background: $gradient-middle;
-        animation: heartBeat 0.3s ease;
+        background: linear-gradient(135deg, #FF6B9D, #FF8DA1);
+        animation: heartBeat 0.4s ease;
+        border-color: transparent;
+        box-shadow: 0 4px 16px rgba(255, 107, 157, 0.5);
 
         ion-icon {
             color: white;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
     }
 
@@ -261,37 +457,36 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes heartBeat {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
     }
-
     50% {
-        transform: scale(1.2);
+        transform: scale(1.3);
     }
 }
 
 .card-info {
-    padding: 14px;
-    background: linear-gradient(180deg, transparent 0%, rgba(255, 240, 245, 0.5) 100%);
+    padding: 16px;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 240, 245, 0.6) 100%);
 }
 
 .product-name {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 800;
     color: $text-dark;
     margin: 0 0 6px 0;
+    letter-spacing: 0.3px;
 }
 
 .product-desc {
-    font-size: 12px;
+    font-size: 13px;
     color: $text-gray;
-    margin: 0 0 12px 0;
+    margin: 0 0 14px 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.4;
 }
 
 .card-footer {
@@ -303,27 +498,29 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 .price-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
 }
 
 .price-label {
     font-size: 11px;
     color: $text-gray;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .price-value {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 900;
     background: linear-gradient(135deg, $gradient-middle, $gradient-top);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
 }
 
 .add-cart-btn {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: none;
     background: linear-gradient(135deg, $gradient-middle, $gradient-top);
@@ -331,97 +528,136 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(196, 69, 105, 0.3);
+    box-shadow: 
+        0 6px 16px rgba(196, 69, 105, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s;
 
     ion-icon {
-        font-size: 20px;
+        font-size: 22px;
         color: white;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     }
 
-    &:active {
-        transform: scale(0.9);
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(196, 69, 105, 0.5);
     }
-}
-
-.no-results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 60px 20px;
-    color: $text-light;
-
-    ion-icon {
-        font-size: 80px;
-        opacity: 0.5;
-        margin-bottom: 20px;
-    }
-
-    p {
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0 0 24px 0;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-}
-
-.reset-btn {
-    background: linear-gradient(135deg, #FFE5EC, #FFF0F5);
-    border: none;
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    color: $gradient-middle;
-    cursor: pointer;
-    box-shadow: $shadow-md;
 
     &:active {
         transform: scale(0.95);
     }
 }
 
-// bottom navigation styles
+// ========================================
+// 🎨 NO RESULTS
+// ========================================
+.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 20px;
+    color: $text-light;
+
+    ion-icon {
+        font-size: 100px;
+        opacity: 0.6;
+        margin-bottom: 24px;
+        animation: float-icon 3s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0 0 28px 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #FFE5EC, #FFF0F5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: $gradient-middle;
+    cursor: pointer;
+    box-shadow: $shadow-md;
+    transition: all 0.3s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-lg;
+    }
+
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+// ========================================
+// 🎨 BOTTOM NAV - 增强玻璃态
+// ========================================
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 70px;
-    background: linear-gradient(135deg, rgba(255, 229, 236, 0.95), rgba(255, 240, 245, 0.95));
-    backdrop-filter: blur(20px);
+    height: 75px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 229, 236, 0.98),
+        rgba(255, 240, 245, 0.95)
+    );
+    backdrop-filter: blur(25px) saturate(180%);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 
+        0 -6px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
     padding: 8px 0;
     z-index: 1000;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
 }
 
 .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 8px 16px;
+    gap: 5px;
+    padding: 10px 18px;
     cursor: pointer;
-    position: relative; //让badge 正确navigate
+    position: relative;
     transition: all 0.3s ease;
+    border-radius: 16px;
 
     ion-icon {
-        font-size: 24px;
+        font-size: 26px;
         color: $text-gray;
+        transition: all 0.3s;
     }
 
     span {
-        font-size: 11px;
-        font-weight: 600;
+        font-size: 12px;
+        font-weight: 700;
         color: $text-gray;
+        letter-spacing: 0.3px;
     }
 
     &.active {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 107, 157, 0.15),
+            rgba(255, 141, 161, 0.1)
+        );
+
         ion-icon {
             color: $gradient-middle;
-            transform: scale(1.1);
+            transform: scale(1.15);
+            filter: drop-shadow(0 2px 4px rgba(196, 69, 105, 0.3));
         }
 
         span {
@@ -436,17 +672,81 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 
 .nav-badge {
     position: absolute;
-    top: 4px;
-    right: 8px;
-    background: $gradient-middle;
+    top: 6px;
+    right: 10px;
+    background: linear-gradient(135deg, $gradient-middle, $gradient-top);
     color: white;
-    font-size: 10px;
-    font-weight: 700;
-    border-radius: 10px;
-    padding: 2px 6px;
-    min-width: 18px;
-    box-shadow: 0 2px 4px rgba(196, 69, 105, 0.4);
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 12px;
+    padding: 3px 7px;
+    min-width: 20px;
+    box-shadow: 
+        0 3px 8px rgba(196, 69, 105, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
+
+// ========================================
+// 🎨 ANIMATIONS
+// ========================================
+
+@keyframes subtle-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes pulse-icon {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes icon-bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.3);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    70% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes float-icon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+// ========================================
+// 🎨 RESPONSIVE
+// ========================================
 
 @media (max-width: 768px) {
     .dishes-grid {
@@ -464,257 +764,4 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 
 ion-button {
     text-transform: none;
-}
-
-// ========================================
-
-// category btn
-.category-section {
-  padding: 16px;
-  position: relative;
-  z-index: 10;
-
-  // 添加玻璃态background
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 8px;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.15) 0%,
-      rgba(255, 255, 255, 0.08) 100%
-    );
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    z-index: -1;
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
-}
-
-// category btn scroll container
-.category-scroll {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding: 12px 4px;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-// 增强的category btn
-.category-btn {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(255, 255, 255, 0.85) 100%
-  );
-  border: 2px solid rgba(255, 107, 157, 0.2);
-  border-radius: 16px;
-  padding: 10px 18px;
-  min-width: fit-content;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  position: relative;
-  overflow: hidden;
-  font-size: 15px;
-  font-weight: 700;
-  color: #666;
-
-  // icon style
-  ion-icon {
-    font-size: 20px;
-    color: #FF6B9D;
-    transition: all 0.3s;
-  }
-
-  // 光泽effect
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.5),
-      transparent
-    );
-    transition: left 0.6s;
-  }
-
-  // Hover effect
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-      0 6px 16px rgba(255, 107, 157, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 1);
-
-    &::before {
-      left: 100%;
-    }
-
-    ion-icon {
-      transform: rotate(10deg) scale(1.1);
-    }
-  }
-
-  // Active effect
-  &:active {
-    transform: scale(0.96);
-  }
-
-  // 选中status
-  &.active {
-    background: linear-gradient(
-      135deg,
-      #FF6B9D 0%,
-      #FF8DA1 25%,
-      #FFA8B8 50%,
-      #FF8DA1 75%,
-      #FF6B9D 100%
-    );
-    background-size: 200% 100%;
-    animation: gradient-shift 3s ease infinite;
-    border-color: transparent;
-    color: white;
-    box-shadow: 
-      0 6px 20px rgba(255, 107, 157, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      0 0 0 3px rgba(255, 107, 157, 0.2);
-
-    ion-icon {
-      color: white;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 14px;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.3) 0%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.3) 100%
-      );
-      pointer-events: none;
-    }
-  }
-}
-
-// 特定category 的color主题
-.category-btn {
-  &[data-category="Pizza"] {
-    &.active {
-      background: linear-gradient(135deg, #FF6B9D, #FF8DA1);
-      box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
-    }
-  }
-
-  &[data-category="Burger"] {
-    &.active {
-      background: linear-gradient(135deg, #FF9800, #FFB74D);
-      box-shadow: 0 6px 20px rgba(255, 152, 0, 0.5);
-    }
-  }
-
-  &[data-category="Sushi"] {
-    &.active {
-      background: linear-gradient(135deg, #F44336, #E57373);
-      box-shadow: 0 6px 20px rgba(244, 67, 54, 0.5);
-    }
-  }
-
-  &[data-category="Bibimbap"] {
-    &.active {
-      background: linear-gradient(135deg, #9C27B0, #BA68C8);
-      box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5);
-    }
-  }
-
-  &[data-category="Ramen"] {
-    &.active {
-      background: linear-gradient(135deg, #FF5722, #FF8A65);
-      box-shadow: 0 6px 20px rgba(255, 87, 34, 0.5);
-    }
-  }
-
-  &[data-category="Dessert"] {
-    &.active {
-      background: linear-gradient(135deg, #E91E63, #F48FB1);
-      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5);
-    }
-  }
-}
-
-// 渐变animation
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-// ========================================
-// 如果btn是用 ion-chip 实现的
-// ========================================
-
-ion-chip {
-  &.category-chip {
-    --background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.85) 100%
-    );
-    border: 2px solid rgba(255, 107, 157, 0.2);
-    box-shadow: 
-      0 4px 12px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    transition: all 0.3s;
-    font-weight: 700;
-    height: 40px;
-
-    ion-icon {
-      color: #FF6B9D;
-    }
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(255, 107, 157, 0.25);
-    }
-
-    // 选中status
-    &.chip-selected {
-      --background: linear-gradient(135deg, #FF6B9D, #FF8DA1);
-      color: white;
-      box-shadow: 
-        0 6px 20px rgba(255, 107, 157, 0.5),
-        0 0 0 3px rgba(255, 107, 157, 0.2);
-
-      ion-icon {
-        color: white;
-      }
-    }
-  }
 }
