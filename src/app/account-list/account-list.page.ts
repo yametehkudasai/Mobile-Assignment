@@ -244,7 +244,7 @@ export class AccountListPage implements OnInit {
   }
 
   performClearAll() {
-    // 🔥 保留admin account，只delete普通users
+    // 保留admin account，只delete普通users
     const usersData = localStorage.getItem('users');
     const adminIds: string[] = [];
 
