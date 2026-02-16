@@ -149,17 +149,28 @@ export class AccountListPage implements OnInit {
       // 完整clear：delete该users的所有data
       this.cleanupUserData(accountId);
 
-      // 如果delete的是当前users，清除login status
+      // check delete 的是不是cureent user
       const currentUserData = localStorage.getItem('currentUser');
       if (currentUserData) {
         const currentUser = JSON.parse(currentUserData);
+
+        // 如果删除的是当前user
         if (currentUser.id === accountId) {
-          localStorage.removeItem('currentUser');
-          // 🔥 重新laod AuthService data
+          
+          // 如果当前user是admin，不需要logout，继续check list
+          if (currentUser.isAdmin) {
+            // 管理员删除自己的情况（理论上不会发生，因为已过滤）
+            this.showToast('Cannot delete yourself while logged in', 'danger');
+            return;
+          } else{
+
+            localStorage.removeItem('currentUser');
+          // 重新laod AuthService data
           this.authService.reloadData();
           this.showToast('Current user deleted. Please login again.', 'warning');
           this.router.navigate(['/login']);
           return;
+          }
         }
       }
 
