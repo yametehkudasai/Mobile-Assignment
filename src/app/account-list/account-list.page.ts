@@ -266,6 +266,8 @@ export class AccountListPage implements OnInit {
     // 完整清理：只保留admin的cart和favorites
     this.cleanupAllUserData(adminIds);
 
+    this.authService.reloadData();
+
     this.showToast('All user accounts cleared (admin preserved)', 'success');
     this.loadAccounts();
   }
