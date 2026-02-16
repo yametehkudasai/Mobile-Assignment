@@ -65,7 +65,7 @@ const routes: Routes = [
   },
   {
     path: 'transaction-history',
-    loadChildren: () => import('./transaction-history/transaction-history.module').then( m => m.TransactionHistoryPageModule)
+    loadChildren: () => import('./transaction-history/transaction-history.module').then(m => m.TransactionHistoryPageModule)
   },
 ];
 
