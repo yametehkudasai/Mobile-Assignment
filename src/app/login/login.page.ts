@@ -67,15 +67,9 @@ export class LoginPage implements OnInit {
       // 清空form data
       this.clearForm();
 
-      // 所有users（包括admin）都nav到 Homepage
+      // 所有users（包括admin）都navigate到 Homepage
       this.router.navigate(['/homepage']);
 
-      // 如果是admin，去到account list page，否则去homepage
-      if (this.authService.isAdmin()) {
-        this.router.navigate(['/account-list']);
-      } else {
-        this.router.navigate(['/homepage']);
-      }
     } else {
       await this.showToast(result.message, 'danger');
     }
