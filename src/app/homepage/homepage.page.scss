@@ -6,7 +6,7 @@ $rainbow-blue: #4D96FF;
 $rainbow-purple: #9B59B6;
 $rainbow-pink: #FF6B9D;
 
-// 渐变bacl - 彩虹渐变
+// 渐变background - 彩虹渐变
 .gradient-page {
     --background: linear-gradient(180deg,
             #FF6B9D 0%,
@@ -20,7 +20,7 @@ $rainbow-pink: #FF6B9D;
     --padding-bottom: 90px;
     position: relative;
 
-    // 彩虹光晕背景
+    // 彩虹光晕background
     &::before {
         content: '';
         position: fixed;
@@ -40,7 +40,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 SEARCH BAR - 彩虹玻璃态
+// SEARCH BAR - 彩虹玻璃态
 // ========================================
 .search-section {
     padding: 16px;
