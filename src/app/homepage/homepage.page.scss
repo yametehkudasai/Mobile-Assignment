@@ -102,7 +102,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🌈 CATEGORIES SECTION - 响应式五彩按钮
+// CATEGORIES SECTION - responsive五彩btn
 // ========================================
 .categories-section {
     padding: 12px 16px 16px;
@@ -134,7 +134,7 @@ $rainbow-pink: #FF6B9D;
     }
 }
 
-// 🌈🌈🌈 响应式五彩按钮
+// responsive五彩btn
 .category-chip {
     display: flex;
     align-items: center;
@@ -158,7 +158,7 @@ $rainbow-pink: #FF6B9D;
     flex-shrink: 0;
     min-width: fit-content;
 
-    // 光泽效果
+    // 光泽effect
     &::before {
         content: '';
         position: absolute;
@@ -190,7 +190,7 @@ $rainbow-pink: #FF6B9D;
         white-space: nowrap;
     }
 
-    // Hover效果
+    // Hover effect
     &:hover {
         transform: translateY(-3px) scale(1.05);
         box-shadow:
@@ -210,7 +210,7 @@ $rainbow-pink: #FF6B9D;
         transform: scale(0.95);
     }
 
-    // 🌈🌈🌈 五彩选中状态 - 每个按钮不同颜色
+    // 五彩选中btn - 每个btn不同颜色
     &.active {
         border-color: transparent;
         transform: scale(1.08);
@@ -242,7 +242,7 @@ $rainbow-pink: #FF6B9D;
     }
 }
 
-// 🌈 每个分类独特的彩虹色
+// 每个category独特的彩虹色
 .category-chip:nth-child(1).active {
     // All - 彩虹渐变
     background: linear-gradient(135deg,
@@ -309,7 +309,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 POPULAR HEADER - 响应式
+// POPULAR HEADER - responsive
 // ========================================
 .popular-header {
     display: flex;
@@ -354,7 +354,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 DISHES GRID - 响应式
+//  DISHES GRID - responsive
 // ========================================
 .dishes-grid {
     display: grid;
@@ -560,7 +560,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 NO RESULTS - 响应式
+// NO RESULTS - responsive
 // ========================================
 .no-results {
     display: flex;
@@ -608,7 +608,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 BOTTOM NAV - 响应式五彩
+// BOTTOM NAV - responsive五彩
 // ========================================
 .bottom-nav {
     position: fixed;
@@ -658,7 +658,7 @@ $rainbow-pink: #FF6B9D;
         white-space: nowrap;
     }
 
-    // 五彩active状态
+    // 五彩active status
     &.active:nth-child(1) {
         background: linear-gradient(135deg,
                 rgba(255, 107, 107, 0.2),
@@ -739,7 +739,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🌈 ANIMATIONS
+// ANIMATIONS
 // ========================================
 @keyframes rainbow-pulse {
 
@@ -812,7 +812,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 RESPONSIVE BREAKPOINTS
+// RESPONSIVE BREAKPOINTS
 // ========================================
 @media (max-width: 360px) {
     .categories-scroll {
