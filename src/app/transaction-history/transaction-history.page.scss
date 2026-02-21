@@ -1,24 +1,28 @@
-// basic渐变background - 丰富的多layer渐变
+// ========================================
+// 🌈 RAINBOW TRANSACTION HISTORY - 五彩交易历史
+// ========================================
+
+// 彩虹渐变背景
 .gradient-transaction-page {
     --background: linear-gradient(180deg,
             #FF6B9D 0%,
-            #FF8DA1 15%,
-            #C44569 40%,
-            #A83256 60%,
-            #7B3F61 80%,
-            #5A2C4A 100%);
+            #FFA500 20%,
+            #FFD93D 40%,
+            #6BCB77 60%,
+            #4D96FF 80%,
+            #9B59B6 100%);
     position: relative;
     overflow: hidden;
 
-    // 脉冲光圈 1 - 粉色
+    // 彩虹光晕1
     &::before {
         content: '';
         position: absolute;
         width: 600px;
         height: 600px;
         background: radial-gradient(circle,
-                rgba(255, 107, 157, 0.4) 0%,
-                rgba(255, 141, 161, 0.2) 30%,
+                rgba(255, 107, 107, 0.3) 0%,
+                rgba(255, 165, 0, 0.2) 30%,
                 transparent 70%);
         border-radius: 50%;
         top: -250px;
@@ -28,15 +32,15 @@
         filter: blur(40px);
     }
 
-    // 脉冲光圈 2 - 紫色
+    // 彩虹光晕2
     &::after {
         content: '';
         position: absolute;
         width: 500px;
         height: 500px;
         background: radial-gradient(circle,
-                rgba(196, 69, 105, 0.4) 0%,
-                rgba(168, 50, 86, 0.2) 30%,
+                rgba(77, 150, 255, 0.3) 0%,
+                rgba(155, 89, 182, 0.2) 30%,
                 transparent 70%);
         border-radius: 50%;
         bottom: -200px;
@@ -47,7 +51,7 @@
     }
 }
 
-// 漂浮圆圈 - 更多color变化
+// 漂浮圆圈
 .floating-circles {
     position: absolute;
     width: 100%;
@@ -66,11 +70,11 @@
             height: 120px;
             left: 10%;
             background: radial-gradient(circle,
-                    rgba(255, 255, 255, 0.2) 0%,
-                    rgba(255, 107, 157, 0.15) 50%,
+                    rgba(255, 107, 107, 0.2) 0%,
+                    rgba(255, 165, 0, 0.15) 50%,
                     transparent 100%);
             animation-delay: 0s;
-            box-shadow: 0 0 40px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 0 40px rgba(255, 107, 107, 0.3);
         }
 
         &:nth-child(2) {
@@ -78,11 +82,11 @@
             height: 80px;
             left: 70%;
             background: radial-gradient(circle,
-                    rgba(255, 255, 255, 0.2) 0%,
-                    rgba(196, 69, 105, 0.15) 50%,
+                    rgba(107, 203, 119, 0.2) 0%,
+                    rgba(77, 150, 255, 0.15) 50%,
                     transparent 100%);
             animation-delay: 3s;
-            box-shadow: 0 0 30px rgba(196, 69, 105, 0.3);
+            box-shadow: 0 0 30px rgba(107, 203, 119, 0.3);
         }
 
         &:nth-child(3) {
@@ -90,16 +94,16 @@
             height: 100px;
             left: 40%;
             background: radial-gradient(circle,
-                    rgba(255, 255, 255, 0.2) 0%,
-                    rgba(168, 50, 86, 0.15) 50%,
+                    rgba(155, 89, 182, 0.2) 0%,
+                    rgba(255, 107, 157, 0.15) 50%,
                     transparent 100%);
             animation-delay: 6s;
-            box-shadow: 0 0 35px rgba(168, 50, 86, 0.3);
+            box-shadow: 0 0 35px rgba(155, 89, 182, 0.3);
         }
     }
 }
 
-// food image decoration - 丰富的颜色和effect
+// 食物图标装饰
 .food-patterns {
     position: absolute;
     width: 100%;
@@ -109,7 +113,7 @@
 
     .food-icon {
         position: absolute;
-        font-size: 70px;
+        font-size: clamp(50px, 15vw, 70px);
         animation: rotate-slow 25s linear infinite, glow-pulse 4s ease-in-out infinite;
         filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
 
@@ -123,21 +127,21 @@
         &:nth-child(2) {
             top: 55%;
             right: 8%;
-            color: rgba(255, 160, 122, 0.15);
+            color: rgba(255, 217, 102, 0.15);
             animation-delay: 6s, 1s;
         }
 
         &:nth-child(3) {
             bottom: 25%;
             left: 12%;
-            color: rgba(221, 160, 221, 0.15);
+            color: rgba(135, 206, 250, 0.15);
             animation-delay: 12s, 2s;
         }
 
         &:nth-child(4) {
             top: 35%;
             right: 15%;
-            color: rgba(255, 192, 203, 0.15);
+            color: rgba(186, 143, 230, 0.15);
             animation-delay: 18s, 3s;
         }
     }
@@ -163,7 +167,7 @@
     opacity: 0.7;
 }
 
-// 光束effect
+// 光束效果
 .light-beams {
     position: absolute;
     width: 300%;
@@ -180,14 +184,14 @@
 }
 
 // ========================================
-// HEADER BAR - 玻璃态effect
+// 🎨 HEADER BAR - 响应式玻璃态
 // ========================================
 .header-bar {
     position: relative;
     z-index: 10;
     display: flex;
     align-items: center;
-    padding: 20px 16px 16px;
+    padding: clamp(16px, 4vw, 20px) clamp(12px, 3vw, 16px) clamp(12px, 3vw, 16px);
     background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.25) 0%,
             rgba(255, 255, 255, 0.15) 100%);
@@ -196,15 +200,16 @@
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    gap: clamp(8px, 2vw, 12px);
 
     .back-btn {
         background: linear-gradient(135deg,
                 rgba(255, 255, 255, 0.35) 0%,
                 rgba(255, 255, 255, 0.2) 100%);
         border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 14px;
-        width: 44px;
-        height: 44px;
+        border-radius: clamp(10px, 3vw, 14px);
+        width: clamp(36px, 10vw, 44px);
+        height: clamp(36px, 10vw, 44px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -213,18 +218,16 @@
         box-shadow:
             0 4px 12px rgba(0, 0, 0, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        flex-shrink: 0;
 
         ion-icon {
-            font-size: 26px;
+            font-size: clamp(20px, 6vw, 26px);
             color: white;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
 
         &:active {
             transform: scale(0.92);
-            background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.45) 0%,
-                    rgba(255, 255, 255, 0.3) 100%);
         }
 
         &:hover {
@@ -238,82 +241,141 @@
         flex: 1;
         text-align: center;
         color: white;
-        font-size: 22px;
+        font-size: clamp(18px, 5vw, 22px);
         font-weight: 800;
         margin: 0;
         text-shadow:
             0 2px 4px rgba(0, 0, 0, 0.2),
             0 0 20px rgba(255, 255, 255, 0.3);
         letter-spacing: 0.5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .header-spacer {
-        width: 44px;
+        width: clamp(36px, 10vw, 44px);
+        flex-shrink: 0;
     }
 }
 
 // ========================================
-// 🎨 FILTER SECTION - 渐变btn
+// 🌈🌈🌈 FILTER SECTION - 五彩响应式按钮
 // ========================================
 .filter-section {
     position: relative;
     z-index: 10;
-    padding: 20px 16px;
+    padding: clamp(12px, 3vw, 20px) clamp(12px, 3vw, 16px);
 
     ion-segment {
         background: linear-gradient(135deg,
                 rgba(255, 255, 255, 0.2) 0%,
                 rgba(255, 255, 255, 0.1) 100%);
-        border-radius: 16px;
-        padding: 6px;
+        border-radius: clamp(12px, 3vw, 16px);
+        padding: clamp(4px, 1vw, 6px);
         backdrop-filter: blur(15px) saturate(180%);
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow:
             0 8px 24px rgba(0, 0, 0, 0.15),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(4px, 1vw, 6px);
 
         ion-segment-button {
             --color: rgba(255, 255, 255, 0.8);
             --color-checked: white;
             --indicator-color: transparent;
             --indicator-box-shadow: none;
-            min-height: 40px;
-            font-size: 14px;
+            min-height: clamp(32px, 8vw, 40px);
+            font-size: clamp(11px, 3vw, 14px);
             font-weight: 700;
-            border-radius: 12px;
-            margin: 2px;
+            border-radius: clamp(8px, 2vw, 12px);
+            margin: 0;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            padding: clamp(6px, 1.5vw, 8px) clamp(8px, 2vw, 12px);
 
-            // 未选中status
+            ion-label {
+                margin: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            // 未选中状态
             &::before {
                 content: '';
                 position: absolute;
                 inset: 0;
-                border-radius: 12px;
+                border-radius: clamp(8px, 2vw, 12px);
                 background: transparent;
                 transition: all 0.3s;
             }
 
-            // 选中status- 渐变background
-            &.segment-button-checked {
-                --color-checked: white;
-
+            // 🌈 All - 彩虹渐变
+            &:nth-child(1).segment-button-checked {
                 &::before {
                     background: linear-gradient(135deg,
-                            rgba(255, 107, 157, 0.9) 0%,
-                            rgba(255, 141, 161, 0.8) 50%,
-                            rgba(255, 107, 157, 0.9) 100%);
+                            #FF6B6B 0%,
+                            #FFA500 33%,
+                            #FFD93D 66%,
+                            #6BCB77 100%);
+                    background-size: 300% 100%;
+                    animation: rainbow-flow 3s ease infinite;
                     box-shadow:
-                        0 4px 12px rgba(255, 107, 157, 0.4),
+                        0 4px 12px rgba(255, 107, 107, 0.5),
                         inset 0 1px 0 rgba(255, 255, 255, 0.4);
                 }
+            }
+
+            // 🟢 Completed - 绿色渐变
+            &:nth-child(2).segment-button-checked {
+                &::before {
+                    background: linear-gradient(135deg,
+                            #6BCB77 0%,
+                            #51B86A 50%,
+                            #4D96FF 100%);
+                    box-shadow:
+                        0 4px 12px rgba(107, 203, 119, 0.5),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+                }
+            }
+
+            // 🟡 Pending - 橙黄渐变
+            &:nth-child(3).segment-button-checked {
+                &::before {
+                    background: linear-gradient(135deg,
+                            #FFA500 0%,
+                            #FFB84D 50%,
+                            #FFD93D 100%);
+                    box-shadow:
+                        0 4px 12px rgba(255, 165, 0, 0.5),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+                }
+            }
+
+            // 🔴 Cancelled - 红色渐变
+            &:nth-child(4).segment-button-checked {
+                &::before {
+                    background: linear-gradient(135deg,
+                            #FF6B6B 0%,
+                            #FF8E53 50%,
+                            #FF6B9D 100%);
+                    box-shadow:
+                        0 4px 12px rgba(255, 107, 107, 0.5),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+                }
+            }
+
+            &.segment-button-checked {
+                --color-checked: white;
 
                 ion-label {
                     position: relative;
                     z-index: 1;
-                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
                 }
             }
 
@@ -327,7 +389,7 @@
 }
 
 // ========================================
-// EMPTY STATE - 丰富渐变
+// 🎨 EMPTY STATE - 响应式
 // ========================================
 .empty-state {
     position: relative;
@@ -336,63 +398,66 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px;
+    padding: clamp(40px, 15vw, 80px) clamp(16px, 5vw, 20px);
     text-align: center;
 
     .empty-icon {
-        font-size: 120px;
+        font-size: clamp(80px, 25vw, 120px);
         color: transparent;
         background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.5) 0%,
-                rgba(255, 182, 193, 0.4) 50%,
-                rgba(255, 255, 255, 0.5) 100%);
+                rgba(255, 255, 255, 0.6) 0%,
+                rgba(255, 182, 193, 0.5) 50%,
+                rgba(255, 255, 255, 0.6) 100%);
         -webkit-background-clip: text;
         background-clip: text;
-        margin-bottom: 24px;
+        margin-bottom: clamp(16px, 5vw, 24px);
         animation: float-icon 3s ease-in-out infinite;
         filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     }
 
     h2 {
         color: white;
-        font-size: 28px;
+        font-size: clamp(20px, 6vw, 28px);
         font-weight: 800;
-        margin: 0 0 12px;
+        margin: 0 0 clamp(8px, 2vw, 12px);
         text-shadow:
             0 2px 4px rgba(0, 0, 0, 0.2),
             0 0 20px rgba(255, 255, 255, 0.2);
+        line-height: 1.3;
     }
 
     p {
         color: rgba(255, 255, 255, 0.85);
-        font-size: 17px;
-        margin: 0 0 36px;
+        font-size: clamp(14px, 4vw, 17px);
+        margin: 0 0 clamp(24px, 7vw, 36px);
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        max-width: 90%;
     }
 
     .primary-btn {
         background: linear-gradient(135deg,
-                #FF6B9D 0%,
-                #FF8DA1 50%,
-                #FFA8B8 100%);
+                #6BCB77 0%,
+                #51B86A 50%,
+                #4D96FF 100%);
         color: white;
         border: none;
-        border-radius: 16px;
-        padding: 16px 36px;
-        font-size: 17px;
+        border-radius: clamp(12px, 3vw, 16px);
+        padding: clamp(12px, 3vw, 16px) clamp(24px, 6vw, 36px);
+        font-size: clamp(14px, 3.5vw, 17px);
         font-weight: 700;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: clamp(6px, 2vw, 10px);
         cursor: pointer;
         box-shadow:
-            0 8px 24px rgba(255, 107, 157, 0.5),
+            0 8px 24px rgba(107, 203, 119, 0.5),
             inset 0 1px 0 rgba(255, 255, 255, 0.4);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
+        white-space: nowrap;
 
-        // 光泽effect
+        // 光泽效果
         &::before {
             content: '';
             position: absolute;
@@ -412,35 +477,39 @@
         }
 
         ion-icon {
-            font-size: 22px;
+            font-size: clamp(18px, 5vw, 22px);
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            flex-shrink: 0;
+        }
+
+        span {
+            flex-shrink: 1;
+            min-width: 0;
         }
 
         &:active {
             transform: scale(0.96);
-            box-shadow:
-                0 4px 12px rgba(255, 107, 157, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
     }
 }
 
 // ========================================
-// TRANSACTION CARD - 玻璃态渐变card
+// 🎨 TRANSACTION LIST - 响应式
 // ========================================
 .transactions-list {
     position: relative;
     z-index: 10;
-    padding: 0 16px 24px;
+    padding: 0 clamp(12px, 3vw, 16px) clamp(16px, 5vw, 24px);
 }
 
+// 🌈 五彩交易卡片
 .transaction-card {
     background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.98) 0%,
             rgba(255, 255, 255, 0.95) 100%);
-    border-radius: 20px;
-    padding: 18px;
-    margin-bottom: 18px;
+    border-radius: clamp(16px, 4vw, 20px);
+    padding: clamp(14px, 3.5vw, 18px);
+    margin-bottom: clamp(12px, 3vw, 18px);
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 1);
@@ -448,29 +517,41 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
 
-    // card光晕effect
+    // 顶部彩色线条
     &::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 3px;
-        background: linear-gradient(90deg,
-                #FF6B9D 0%,
-                #FF8DA1 33%,
-                #FFA8B8 66%,
-                #FF6B9D 100%);
+        height: clamp(2px, 0.5vw, 3px);
         opacity: 0;
         transition: opacity 0.3s;
+    }
+
+    // 根据索引显示不同颜色的顶部线
+    &:nth-child(4n+1)::before {
+        background: linear-gradient(90deg, #FF6B6B, #FFA500);
+    }
+
+    &:nth-child(4n+2)::before {
+        background: linear-gradient(90deg, #6BCB77, #4D96FF);
+    }
+
+    &:nth-child(4n+3)::before {
+        background: linear-gradient(90deg, #FFD93D, #FFA500);
+    }
+
+    &:nth-child(4n+4)::before {
+        background: linear-gradient(90deg, #9B59B6, #FF6B9D);
     }
 
     &:hover {
         transform: translateY(-4px);
         box-shadow:
-            0 12px 40px rgba(255, 107, 157, 0.25),
+            0 12px 40px rgba(77, 150, 255, 0.25),
             inset 0 1px 0 rgba(255, 255, 255, 1);
 
         &::before {
@@ -479,89 +560,93 @@
     }
 
     &:active {
-        transform: translateY(-2px) scale(0.98);
-        box-shadow:
-            0 6px 24px rgba(255, 107, 157, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 1);
+        transform: scale(0.98);
     }
 
-    // Transaction Header
     .transaction-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 14px;
-        padding-bottom: 14px;
-        border-bottom: 2px solid rgba(255, 107, 157, 0.1);
+        margin-bottom: clamp(10px, 2.5vw, 14px);
+        padding-bottom: clamp(10px, 2.5vw, 14px);
+        border-bottom: 2px solid rgba(77, 150, 255, 0.1);
+        gap: clamp(8px, 2vw, 12px);
 
         .transaction-info {
             flex: 1;
+            min-width: 0;
 
             .transaction-id {
                 color: #333;
-                font-size: 17px;
+                font-size: clamp(14px, 3.5vw, 17px);
                 font-weight: 800;
-                margin: 0 0 6px;
-                background: linear-gradient(135deg, #FF6B9D, #C44569);
+                margin: 0 0 clamp(4px, 1vw, 6px);
+                background: linear-gradient(135deg, #4D96FF, #9B59B6);
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .transaction-date {
                 color: #999;
-                font-size: 14px;
+                font-size: clamp(11px, 3vw, 14px);
                 margin: 0;
                 font-weight: 500;
             }
         }
 
         .status-badge {
-            font-size: 11px;
+            font-size: clamp(9px, 2.5vw, 11px);
             font-weight: 800;
-            padding: 8px 14px;
-            border-radius: 20px;
+            padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 14px);
+            border-radius: clamp(16px, 4vw, 20px);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.3);
+            flex-shrink: 0;
+            white-space: nowrap;
         }
     }
 
-    // Transaction Items
     .transaction-items {
-        margin-bottom: 14px;
+        margin-bottom: clamp(10px, 2.5vw, 14px);
 
         .item-row {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 10px 0;
+            gap: clamp(10px, 2.5vw, 14px);
+            padding: clamp(8px, 2vw, 10px) 0;
             transition: background 0.3s;
-            border-radius: 12px;
+            border-radius: clamp(8px, 2vw, 12px);
 
             &:hover {
-                background: rgba(255, 107, 157, 0.05);
+                background: rgba(77, 150, 255, 0.05);
             }
 
             .item-image {
-                width: 56px;
-                height: 56px;
-                border-radius: 12px;
+                width: clamp(40px, 12vw, 56px);
+                height: clamp(40px, 12vw, 56px);
+                border-radius: clamp(8px, 2vw, 12px);
                 object-fit: cover;
                 background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                border: 2px solid rgba(255, 107, 157, 0.2);
+                border: 2px solid rgba(77, 150, 255, 0.2);
+                flex-shrink: 0;
             }
 
             .item-details {
                 flex: 1;
+                min-width: 0;
 
                 .item-name {
                     color: #333;
-                    font-size: 15px;
+                    font-size: clamp(12px, 3.5vw, 15px);
                     font-weight: 700;
-                    margin: 0 0 5px;
+                    margin: 0 0 clamp(3px, 1vw, 5px);
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
@@ -569,50 +654,53 @@
 
                 .item-quantity {
                     color: #999;
-                    font-size: 13px;
+                    font-size: clamp(10px, 2.5vw, 13px);
                     margin: 0;
                     font-weight: 600;
                 }
             }
 
             .item-price {
-                color: #FF6B9D;
-                font-size: 16px;
+                color: #4D96FF;
+                font-size: clamp(13px, 3.5vw, 16px);
                 font-weight: 800;
                 margin: 0;
-                text-shadow: 0 1px 2px rgba(255, 107, 157, 0.2);
+                text-shadow: 0 1px 2px rgba(77, 150, 255, 0.2);
+                flex-shrink: 0;
             }
         }
 
         .more-items {
             color: #999;
-            font-size: 14px;
+            font-size: clamp(11px, 3vw, 14px);
             font-style: italic;
             font-weight: 600;
-            margin: 10px 0 0;
-            padding-left: 70px;
+            margin: clamp(6px, 1.5vw, 10px) 0 0;
+            padding-left: clamp(50px, 15vw, 70px);
         }
     }
 
-    // Transaction Footer
     .transaction-footer {
         display: flex;
         align-items: center;
-        gap: 18px;
-        padding-top: 14px;
-        border-top: 2px solid rgba(255, 107, 157, 0.1);
+        flex-wrap: wrap;
+        gap: clamp(10px, 3vw, 18px);
+        padding-top: clamp(10px, 2.5vw, 14px);
+        border-top: 2px solid rgba(77, 150, 255, 0.1);
 
         .footer-info {
             display: flex;
             align-items: center;
-            gap: 7px;
+            gap: clamp(5px, 1.5vw, 7px);
             color: #666;
-            font-size: 14px;
+            font-size: clamp(11px, 3vw, 14px);
             font-weight: 600;
+            flex-shrink: 1;
 
             ion-icon {
-                font-size: 18px;
-                color: #FF6B9D;
+                font-size: clamp(14px, 4vw, 18px);
+                color: #4D96FF;
+                flex-shrink: 0;
             }
         }
 
@@ -620,50 +708,70 @@
             margin-left: auto;
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #FFF5F8, #FFE8EF);
-            padding: 8px 16px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(255, 107, 157, 0.15);
+            gap: clamp(6px, 1.5vw, 8px);
+            background: linear-gradient(135deg, #E8F5E9, #E3F2FD);
+            padding: clamp(6px, 1.5vw, 8px) clamp(10px, 3vw, 16px);
+            border-radius: clamp(8px, 2vw, 12px);
+            box-shadow: 0 2px 8px rgba(77, 150, 255, 0.15);
+            flex-shrink: 0;
 
             .total-label {
                 color: #666;
-                font-size: 14px;
+                font-size: clamp(11px, 3vw, 14px);
                 font-weight: 600;
             }
 
             .total-amount {
-                color: #FF6B9D;
-                font-size: 20px;
+                color: #4D96FF;
+                font-size: clamp(16px, 4.5vw, 20px);
                 font-weight: 900;
-                text-shadow: 0 1px 2px rgba(255, 107, 157, 0.2);
+                text-shadow: 0 1px 2px rgba(77, 150, 255, 0.2);
             }
         }
     }
 
     .view-details {
         position: absolute;
-        right: 18px;
+        right: clamp(12px, 3vw, 18px);
         top: 50%;
         transform: translateY(-50%);
 
         ion-icon {
-            font-size: 26px;
+            font-size: clamp(20px, 5vw, 26px);
             color: #ddd;
             transition: all 0.3s;
         }
     }
 
     &:hover .view-details ion-icon {
-        color: #FF6B9D;
+        color: #4D96FF;
         transform: translateX(4px);
     }
 }
 
 // ========================================
-// ANIMATIONS
+// 🌈 五彩STATUS BADGES
 // ========================================
+ion-badge {
+    &[color="success"] {
+        --background: linear-gradient(135deg, #6BCB77, #51B86A);
+        box-shadow: 0 4px 12px rgba(107, 203, 119, 0.4);
+    }
 
+    &[color="warning"] {
+        --background: linear-gradient(135deg, #FFA500, #FFB84D);
+        box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
+    }
+
+    &[color="danger"] {
+        --background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+        box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+    }
+}
+
+// ========================================
+// 🎨 ANIMATIONS
+// ========================================
 @keyframes pulse-glow {
 
     0%,
@@ -742,42 +850,47 @@
     }
 }
 
-// ========================================
-// STATUS BADGE COLORS
-// ========================================
-
-ion-badge {
-    &[color="success"] {
-        --background: linear-gradient(135deg, #4CAF50, #66BB6A);
-        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+@keyframes rainbow-flow {
+    0% {
+        background-position: 0% 50%;
     }
 
-    &[color="warning"] {
-        --background: linear-gradient(135deg, #FF9800, #FFB74D);
-        box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+    50% {
+        background-position: 100% 50%;
     }
 
-    &[color="danger"] {
-        --background: linear-gradient(135deg, #F44336, #E57373);
-        box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+    100% {
+        background-position: 0% 50%;
     }
 }
 
 // ========================================
-// RESPONSIVE ADJUSTMENTS
+// 🎨 RESPONSIVE BREAKPOINTS
 // ========================================
-
 @media (max-width: 360px) {
     .header-title {
-        font-size: 19px !important;
+        font-size: 16px !important;
     }
 
     .filter-section ion-segment ion-segment-button {
-        font-size: 12px !important;
-        min-height: 36px !important;
+        font-size: 10px !important;
+        min-height: 30px !important;
+        padding: 5px 6px !important;
     }
 
     .transaction-card {
-        padding: 14px !important;
+        padding: 12px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .filter-section ion-segment {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .transactions-list {
+        max-width: 800px;
+        margin: 0 auto;
     }
 }
