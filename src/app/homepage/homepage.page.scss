@@ -1,29 +1,31 @@
-$gradient-top: #FF6B9D;
-$gradient-middle: #C44569;
-$gradient-bottom: #7B3F61;
-$text-dark: #2C1810;
-$text-light: #FFFFFF;
-$text-gray: #8B7E74;
-
-// card渐变色
-$card-gradient-start: #FFE5EC;
-$card-gradient-end: #FFF0F5;
-
-$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
-$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
-
 // ========================================
-// ENHANCED BACKGROUND
+// 🌈 RAINBOW COLORFUL THEME - 五彩缤纷主题
 // ========================================
+
+// 彩虹色系
+$rainbow-red: #FF6B6B;
+$rainbow-orange: #FFA500;
+$rainbow-yellow: #FFD93D;
+$rainbow-green: #6BCB77;
+$rainbow-blue: #4D96FF;
+$rainbow-purple: #9B59B6;
+$rainbow-pink: #FF6B9D;
+
+// 渐变背景 - 彩虹渐变
 .gradient-page {
     --background: linear-gradient(180deg,
-        #{$gradient-top} 0%,
-        #{$gradient-middle} 50%,
-        #{$gradient-bottom} 100%);
+        #FF6B9D 0%,
+        #FF8DA1 15%,
+        #FFA500 30%,
+        #FFD93D 45%,
+        #6BCB77 60%,
+        #4D96FF 75%,
+        #9B59B6 90%,
+        #8B3F8F 100%);
     --padding-bottom: 90px;
+    position: relative;
 
-    // 增强background - 更多layer
+    // 彩虹光晕背景
     &::before {
         content: '';
         position: fixed;
@@ -32,167 +34,138 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
         right: 0;
         bottom: 0;
         background-image:
-            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.08) 0%, transparent 60%);
+            radial-gradient(circle at 20% 30%, rgba(255, 107, 107, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 50% 60%, rgba(107, 203, 119, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 70% 80%, rgba(77, 150, 255, 0.2) 0%, transparent 50%);
         pointer-events: none;
         z-index: 0;
-        animation: subtle-pulse 10s ease-in-out infinite;
+        animation: rainbow-pulse 15s ease-in-out infinite;
     }
 }
 
 // ========================================
-// SEARCH SECTION - 增强玻璃态
+// 🎨 SEARCH BAR - 彩虹玻璃态
 // ========================================
 .search-section {
-    padding: 20px 16px 16px;
+    padding: 16px;
     position: relative;
     z-index: 1;
 }
 
 .search-bar {
-    background: linear-gradient(135deg,
-            rgba(255, 229, 236, 0.95),
-            rgba(255, 240, 245, 0.9));
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95), 
+        rgba(255, 255, 255, 0.85)
+    );
     border-radius: 20px;
-    padding: 14px 18px;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    box-shadow:
-        $shadow-md,
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    gap: 10px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
-
-    // 添加光晕effect
-    &::before {
-        content: '';
-        position: absolute;
-        inset: -2px;
-        background: linear-gradient(135deg,
-                rgba(255, 107, 157, 0.3),
-                rgba(255, 141, 161, 0.2));
-        border-radius: 20px;
-        opacity: 0;
-        transition: opacity 0.3s;
-        z-index: -1;
-    }
+    transition: all 0.3s;
 
     &:focus-within {
-        box-shadow:
-            $shadow-lg,
-            0 0 0 4px rgba(255, 107, 157, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        box-shadow: 
+            0 8px 32px rgba(77, 150, 255, 0.4),
+            0 0 0 4px rgba(77, 150, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 1);
         transform: translateY(-2px);
-
-        &::before {
-            opacity: 1;
-        }
     }
 }
 
 .search-icon {
-    font-size: 24px;
-    color: $gradient-middle;
-    animation: pulse-icon 2s ease-in-out infinite;
+    font-size: clamp(20px, 5vw, 24px);
+    color: #4D96FF;
+    animation: pulse-rainbow 2s ease-in-out infinite;
+    flex-shrink: 0;
 }
 
 .search-input {
     flex: 1;
     border: none;
     outline: none;
-    font-size: 15px;
-    color: $text-dark;
+    font-size: clamp(14px, 3.5vw, 16px);
+    color: #333;
     background: transparent;
     font-weight: 500;
+    min-width: 0;
 
     &::placeholder {
-        color: $text-gray;
+        color: #999;
     }
 }
 
 .clear-btn {
-    --color: #{$text-gray};
+    --color: #999;
     margin: 0;
-    transition: transform 0.2s;
-
-    &:active {
-        transform: scale(0.9);
-    }
+    flex-shrink: 0;
 }
 
 // ========================================
-// CATEGORIES SECTION - 丰富渐变
+// 🌈 CATEGORIES SECTION - 响应式五彩按钮
 // ========================================
 .categories-section {
-    padding: 0 16px 20px;
+    padding: 12px 16px 16px;
     position: relative;
     z-index: 1;
-
-    // 添加玻璃态container background
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 8px;
-        background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0.05) 100%);
-        backdrop-filter: blur(8px);
-        border-radius: 24px;
-        z-index: -1;
-        box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    }
 }
 
 .section-title {
-    font-size: 22px;
+    font-size: clamp(18px, 5vw, 22px);
     font-weight: 800;
-    color: $text-light;
-    margin: 0 0 18px 0;
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.2),
+    color: white;
+    margin: 0 0 12px 0;
+    text-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.3),
         0 0 20px rgba(255, 255, 255, 0.2);
     letter-spacing: 0.5px;
 }
 
 .categories-scroll {
     display: flex;
-    gap: 12px;
+    gap: clamp(8px, 2vw, 12px);
     overflow-x: auto;
-    padding: 12px 4px;
+    padding: 8px 4px;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {
         display: none;
     }
 }
 
-// 丰富的category btn
+// 🌈🌈🌈 响应式五彩按钮
 .category-chip {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.25) 0%,
-            rgba(255, 255, 255, 0.15) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-radius: 24px;
+    justify-content: center;
+    gap: clamp(6px, 1.5vw, 10px);
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.2)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: clamp(16px, 4vw, 24px);
     white-space: nowrap;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(12px);
-    box-shadow:
+    backdrop-filter: blur(10px);
+    box-shadow: 
         0 4px 16px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
+    min-width: fit-content;
 
-    // 光泽扫过effect
+    // 光泽效果
     &::before {
         content: '';
         position: absolute;
@@ -201,70 +174,65 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
         width: 100%;
         height: 100%;
         background: linear-gradient(90deg,
-                transparent,
-                rgba(255, 255, 255, 0.4),
-                transparent);
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+        );
         transition: left 0.6s;
     }
 
     ion-icon {
-        font-size: 22px;
-        color: $text-light;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        font-size: clamp(18px, 4.5vw, 22px);
+        color: white;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         transition: all 0.3s;
+        flex-shrink: 0;
     }
 
     span {
-        font-size: 15px;
+        font-size: clamp(13px, 3.5vw, 15px);
         font-weight: 700;
-        color: $text-light;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         letter-spacing: 0.3px;
+        white-space: nowrap;
     }
 
-    // Hover effect
+    // Hover效果
     &:hover {
-        transform: translateY(-3px);
-        box-shadow:
-            0 6px 20px rgba(0, 0, 0, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 
+            0 8px 24px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
         &::before {
             left: 100%;
         }
 
         ion-icon {
-            transform: rotate(10deg) scale(1.15);
+            transform: rotate(10deg) scale(1.1);
         }
     }
 
-    // 选中status - 流动渐变
+    &:active {
+        transform: scale(0.95);
+    }
+
+    // 🌈🌈🌈 五彩选中状态 - 每个按钮不同颜色
     &.active {
-        background: linear-gradient(135deg,
-                #FF6B9D 0%,
-                #FF8DA1 20%,
-                #FFA8B8 40%,
-                #FFBAC8 60%,
-                #FF8DA1 80%,
-                #FF6B9D 100%);
-        background-size: 300% 100%;
-        animation: gradient-flow 4s ease infinite;
         border-color: transparent;
-        box-shadow:
-            0 6px 24px rgba(255, 107, 157, 0.6),
-            0 0 0 4px rgba(255, 107, 157, 0.25),
-            inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        transform: scale(1.05);
+        transform: scale(1.08);
+        animation: rainbow-pulse 2s ease-in-out infinite;
 
         ion-icon {
             color: white;
-            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
             animation: icon-bounce 0.6s ease;
         }
 
         span {
             color: white;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
         }
 
         // 内部高光
@@ -272,58 +240,124 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 22px;
+            border-radius: clamp(14px, 3.5vw, 22px);
             background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.4) 0%,
-                    transparent 40%,
-                    rgba(255, 255, 255, 0.2) 100%);
+                rgba(255, 255, 255, 0.4) 0%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.2) 100%
+            );
             pointer-events: none;
         }
     }
+}
 
-    &:active {
-        transform: scale(0.96);
-    }
+// 🌈 每个分类独特的彩虹色
+.category-chip:nth-child(1).active {
+    // All - 彩虹渐变
+    background: linear-gradient(135deg,
+        #FF6B6B 0%,
+        #FFA500 16%,
+        #FFD93D 33%,
+        #6BCB77 50%,
+        #4D96FF 66%,
+        #9B59B6 83%,
+        #FF6B9D 100%
+    );
+    background-size: 300% 100%;
+    animation: rainbow-flow 3s ease infinite, rainbow-pulse 2s ease-in-out infinite;
+    box-shadow: 
+        0 6px 24px rgba(155, 89, 182, 0.6),
+        0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.category-chip:nth-child(2).active {
+    // Pizza - 红橙渐变
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+    box-shadow: 
+        0 6px 24px rgba(255, 107, 107, 0.6),
+        0 0 0 4px rgba(255, 107, 107, 0.3);
+}
+
+.category-chip:nth-child(3).active {
+    // Burger - 橙黄渐变
+    background: linear-gradient(135deg, #FFA500, #FFD93D);
+    box-shadow: 
+        0 6px 24px rgba(255, 165, 0, 0.6),
+        0 0 0 4px rgba(255, 165, 0, 0.3);
+}
+
+.category-chip:nth-child(4).active {
+    // Sushi - 粉红渐变
+    background: linear-gradient(135deg, #FF6B9D, #FF8DA1);
+    box-shadow: 
+        0 6px 24px rgba(255, 107, 157, 0.6),
+        0 0 0 4px rgba(255, 107, 157, 0.3);
+}
+
+.category-chip:nth-child(5).active {
+    // Ramen - 黄绿渐变
+    background: linear-gradient(135deg, #FFD93D, #6BCB77);
+    box-shadow: 
+        0 6px 24px rgba(107, 203, 119, 0.6),
+        0 0 0 4px rgba(107, 203, 119, 0.3);
+}
+
+.category-chip:nth-child(6).active {
+    // Bibimbap - 绿蓝渐变
+    background: linear-gradient(135deg, #6BCB77, #4D96FF);
+    box-shadow: 
+        0 6px 24px rgba(77, 150, 255, 0.6),
+        0 0 0 4px rgba(77, 150, 255, 0.3);
+}
+
+.category-chip:nth-child(7).active {
+    // Dessert - 蓝紫渐变
+    background: linear-gradient(135deg, #4D96FF, #9B59B6);
+    box-shadow: 
+        0 6px 24px rgba(155, 89, 182, 0.6),
+        0 0 0 4px rgba(155, 89, 182, 0.3);
 }
 
 // ========================================
-//  POPULAR HEADER
+// 🎨 POPULAR HEADER - 响应式
 // ========================================
 .popular-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px 16px;
+    padding: 0 16px 12px;
     position: relative;
     z-index: 1;
+    gap: 12px;
 }
 
 .view-all-btn {
     background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0.2) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    padding: 10px 18px;
-    border-radius: 16px;
-    font-size: 14px;
+        rgba(255, 255, 255, 0.35),
+        rgba(255, 255, 255, 0.25)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
+    border-radius: clamp(12px, 3vw, 16px);
+    font-size: clamp(12px, 3vw, 15px);
     font-weight: 700;
-    color: $text-light;
+    color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     backdrop-filter: blur(10px);
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    flex-shrink: 0;
 
     &:hover {
         background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.4) 0%,
-                rgba(255, 255, 255, 0.3) 100%);
+            rgba(255, 255, 255, 0.45),
+            rgba(255, 255, 255, 0.35)
+        );
         transform: translateY(-2px);
-        box-shadow:
-            0 6px 16px rgba(0, 0, 0, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
     &:active {
@@ -332,44 +366,46 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 // ========================================
-// DISHES GRID - 增强card
+// 🎨 DISHES GRID - 响应式
 // ========================================
 .dishes-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+    gap: clamp(12px, 3vw, 18px);
     padding: 0 16px 20px;
     position: relative;
     z-index: 1;
 }
 
 .dish-card {
-    background: linear-gradient(180deg, #FFE5EC 0%, #FFF5F8 100%);
-    border-radius: 24px;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(255, 255, 255, 0.9) 100%
+    );
+    border-radius: clamp(16px, 4vw, 24px);
     overflow: hidden;
-    box-shadow:
-        $shadow-md,
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     border: 2px solid rgba(255, 255, 255, 0.5);
 
-    // 悬浮effect
     &:hover {
         transform: translateY(-6px);
-        box-shadow:
-            0 12px 32px rgba(255, 107, 157, 0.3),
+        box-shadow: 
+            0 12px 32px rgba(77, 150, 255, 0.3),
             inset 0 1px 0 rgba(255, 255, 255, 1);
     }
 
     &:active {
-        transform: translateY(-3px) scale(0.98);
+        transform: scale(0.98);
     }
 }
 
 .card-image-wrapper {
     position: relative;
-    height: 160px;
+    height: clamp(120px, 35vw, 160px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -377,62 +413,52 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .card-image {
-    width: 140px;
-    height: 140px;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
     animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
 }
 
 @keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
 .favorite-btn {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 40px;
-    height: 40px;
+    top: clamp(8px, 2vw, 12px);
+    right: clamp(8px, 2vw, 12px);
+    width: clamp(32px, 8vw, 40px);
+    height: clamp(32px, 8vw, 40px);
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.5);
     background: linear-gradient(135deg,
-            rgba(255, 229, 236, 0.95),
-            rgba(255, 240, 245, 0.9));
+        rgba(255, 255, 255, 0.95),
+        rgba(255, 255, 255, 0.85)
+    );
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow:
-        $shadow-sm,
-        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 10;
     backdrop-filter: blur(10px);
 
     ion-icon {
-        font-size: 22px;
-        color: $text-gray;
-        transition: all 0.3s;
+        font-size: clamp(18px, 5vw, 22px);
+        color: #999;
     }
 
     &.active {
-        background: linear-gradient(135deg, #FF6B9D, #FF8DA1);
+        background: linear-gradient(135deg, #FF6B6B, #FF8E53);
         animation: heartBeat 0.4s ease;
         border-color: transparent;
-        box-shadow: 0 4px 16px rgba(255, 107, 157, 0.5);
+        box-shadow: 0 4px 16px rgba(255, 107, 107, 0.6);
 
         ion-icon {
             color: white;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
     }
 
@@ -442,34 +468,31 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes heartBeat {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.3);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
 }
 
 .card-info {
-    padding: 16px;
-    background: linear-gradient(180deg, transparent 0%, rgba(255, 240, 245, 0.6) 100%);
+    padding: clamp(10px, 3vw, 16px);
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.6) 100%
+    );
 }
 
 .product-name {
-    font-size: 17px;
+    font-size: clamp(14px, 3.5vw, 17px);
     font-weight: 800;
-    color: $text-dark;
-    margin: 0 0 6px 0;
+    color: #333;
+    margin: 0 0 clamp(4px, 1vw, 6px) 0;
     letter-spacing: 0.3px;
+    line-height: 1.3;
 }
 
 .product-desc {
-    font-size: 13px;
-    color: $text-gray;
-    margin: 0 0 14px 0;
+    font-size: clamp(11px, 2.5vw, 13px);
+    color: #666;
+    margin: 0 0 clamp(8px, 2vw, 12px) 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -481,55 +504,55 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 
 .price-info {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
 }
 
 .price-label {
-    font-size: 11px;
-    color: $text-gray;
+    font-size: clamp(9px, 2.5vw, 11px);
+    color: #999;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .price-value {
-    font-size: 22px;
+    font-size: clamp(16px, 4.5vw, 22px);
     font-weight: 900;
-    background: linear-gradient(135deg, $gradient-middle, $gradient-top);
+    background: linear-gradient(135deg, #4D96FF, #9B59B6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.5px;
 }
 
 .add-cart-btn {
-    width: 40px;
-    height: 40px;
+    width: clamp(32px, 8vw, 40px);
+    height: clamp(32px, 8vw, 40px);
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, $gradient-middle, $gradient-top);
+    background: linear-gradient(135deg, #6BCB77, #4D96FF);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow:
-        0 6px 16px rgba(196, 69, 105, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(77, 150, 255, 0.4);
     transition: all 0.3s;
+    flex-shrink: 0;
 
     ion-icon {
-        font-size: 22px;
+        font-size: clamp(18px, 5vw, 22px);
         color: white;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     }
 
     &:hover {
         transform: scale(1.1);
-        box-shadow: 0 8px 20px rgba(196, 69, 105, 0.5);
     }
 
     &:active {
@@ -538,46 +561,47 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 // ========================================
-// NO RESULTS
+// 🎨 NO RESULTS - 响应式
 // ========================================
 .no-results {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 80px 20px;
-    color: $text-light;
+    padding: clamp(40px, 15vw, 80px) 20px;
+    color: white;
 
     ion-icon {
-        font-size: 100px;
-        opacity: 0.6;
-        margin-bottom: 24px;
+        font-size: clamp(60px, 20vw, 100px);
+        opacity: 0.7;
+        margin-bottom: clamp(16px, 5vw, 24px);
         animation: float-icon 3s ease-in-out infinite;
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     }
 
     p {
-        font-size: 20px;
+        font-size: clamp(16px, 4.5vw, 20px);
         font-weight: 700;
-        margin: 0 0 28px 0;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        margin: 0 0 clamp(20px, 6vw, 28px) 0;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
 }
 
 .reset-btn {
-    background: linear-gradient(135deg, #FFE5EC, #FFF0F5);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95), 
+        rgba(255, 255, 255, 0.85)
+    );
     border: 2px solid rgba(255, 255, 255, 0.5);
-    padding: 14px 28px;
-    border-radius: 16px;
-    font-size: 15px;
+    padding: clamp(10px, 3vw, 14px) clamp(20px, 5vw, 28px);
+    border-radius: clamp(12px, 3vw, 16px);
+    font-size: clamp(13px, 3.5vw, 15px);
     font-weight: 700;
-    color: $gradient-middle;
+    color: #4D96FF;
     cursor: pointer;
-    box-shadow: $shadow-md;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s;
 
     &:hover {
         transform: translateY(-2px);
-        box-shadow: $shadow-lg;
     }
 
     &:active {
@@ -586,66 +610,115 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 // ========================================
-// BOTTOM NAV - 增强玻璃态
+// 🎨 BOTTOM NAV - 响应式五彩
 // ========================================
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 75px;
+    height: clamp(60px, 15vw, 75px);
     background: linear-gradient(135deg,
-            rgba(255, 229, 236, 0.98),
-            rgba(255, 240, 245, 0.95));
+        rgba(255, 255, 255, 0.98),
+        rgba(255, 255, 255, 0.95)
+    );
     backdrop-filter: blur(25px) saturate(180%);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow:
+    box-shadow: 
         0 -6px 24px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    padding: 8px 0;
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    padding: clamp(6px, 2vw, 10px) 0;
     z-index: 1000;
-    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    padding: 10px 18px;
+    gap: clamp(3px, 1vw, 5px);
+    padding: clamp(6px, 2vw, 10px) clamp(8px, 3vw, 18px);
     cursor: pointer;
     position: relative;
-    transition: all 0.3s ease;
-    border-radius: 16px;
+    transition: all 0.3s;
+    border-radius: clamp(10px, 3vw, 16px);
+    flex: 1;
+    max-width: 100px;
 
     ion-icon {
-        font-size: 26px;
-        color: $text-gray;
+        font-size: clamp(20px, 6vw, 26px);
+        color: #999;
         transition: all 0.3s;
     }
 
     span {
-        font-size: 12px;
+        font-size: clamp(10px, 2.5vw, 12px);
         font-weight: 700;
-        color: $text-gray;
+        color: #999;
         letter-spacing: 0.3px;
+        white-space: nowrap;
     }
 
-    &.active {
-        background: linear-gradient(135deg,
-                rgba(255, 107, 157, 0.15),
-                rgba(255, 141, 161, 0.1));
-
+    // 五彩active状态
+    &.active:nth-child(1) {
+        background: linear-gradient(135deg, 
+            rgba(255, 107, 107, 0.2),
+            rgba(255, 142, 83, 0.15)
+        );
+        
         ion-icon {
-            color: $gradient-middle;
+            color: #FF6B6B;
             transform: scale(1.15);
-            filter: drop-shadow(0 2px 4px rgba(196, 69, 105, 0.3));
         }
-
         span {
-            color: $gradient-middle;
+            color: #FF6B6B;
+        }
+    }
+
+    &.active:nth-child(2) {
+        background: linear-gradient(135deg, 
+            rgba(255, 165, 0, 0.2),
+            rgba(255, 217, 61, 0.15)
+        );
+        
+        ion-icon {
+            color: #FFA500;
+            transform: scale(1.15);
+        }
+        span {
+            color: #FFA500;
+        }
+    }
+
+    &.active:nth-child(3) {
+        background: linear-gradient(135deg, 
+            rgba(107, 203, 119, 0.2),
+            rgba(77, 150, 255, 0.15)
+        );
+        
+        ion-icon {
+            color: #6BCB77;
+            transform: scale(1.15);
+        }
+        span {
+            color: #6BCB77;
+        }
+    }
+
+    &.active:nth-child(4) {
+        background: linear-gradient(135deg, 
+            rgba(77, 150, 255, 0.2),
+            rgba(155, 89, 182, 0.15)
+        );
+        
+        ion-icon {
+            color: #4D96FF;
+            transform: scale(1.15);
+        }
+        span {
+            color: #4D96FF;
         }
     }
 
@@ -656,109 +729,77 @@ $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 
 .nav-badge {
     position: absolute;
-    top: 6px;
-    right: 10px;
-    background: linear-gradient(135deg, $gradient-middle, $gradient-top);
+    top: clamp(4px, 1vw, 6px);
+    right: clamp(6px, 2vw, 10px);
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
     color: white;
-    font-size: 11px;
+    font-size: clamp(9px, 2.5vw, 11px);
     font-weight: 800;
-    border-radius: 12px;
-    padding: 3px 7px;
-    min-width: 20px;
-    box-shadow:
-        0 3px 8px rgba(196, 69, 105, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-radius: clamp(10px, 2.5vw, 12px);
+    padding: clamp(2px, 0.5vw, 3px) clamp(5px, 1.5vw, 7px);
+    min-width: clamp(16px, 4vw, 20px);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.5);
 }
 
 // ========================================
-// ANIMATIONS
+// 🌈 ANIMATIONS
 // ========================================
-
-@keyframes subtle-pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.8;
-    }
+@keyframes rainbow-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
 }
 
-@keyframes gradient-flow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+@keyframes rainbow-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-@keyframes pulse-icon {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
+@keyframes pulse-rainbow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 @keyframes icon-bounce {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    30% {
-        transform: scale(1.3);
-    }
-
-    50% {
-        transform: scale(0.9);
-    }
-
-    70% {
-        transform: scale(1.1);
-    }
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.3); }
+    50% { transform: scale(0.9); }
+    70% { transform: scale(1.1); }
 }
 
 @keyframes float-icon {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
 // ========================================
-// RESPONSIVE
+// 🎨 RESPONSIVE BREAKPOINTS
 // ========================================
-
-@media (max-width: 768px) {
+@media (max-width: 360px) {
+    .categories-scroll {
+        gap: 6px;
+    }
+    
+    .category-chip {
+        padding: 8px 12px;
+    }
+    
     .dishes-grid {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
     .dishes-grid {
         grid-template-columns: repeat(3, 1fr);
         max-width: 1200px;
         margin: 0 auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .dishes-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
