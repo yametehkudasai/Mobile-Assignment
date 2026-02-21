@@ -1,8 +1,3 @@
-// ========================================
-// 🌈 RAINBOW COLORFUL THEME - 五彩缤纷主题
-// ========================================
-
-// 彩虹色系
 $rainbow-red: #FF6B6B;
 $rainbow-orange: #FFA500;
 $rainbow-yellow: #FFD93D;
@@ -11,21 +6,21 @@ $rainbow-blue: #4D96FF;
 $rainbow-purple: #9B59B6;
 $rainbow-pink: #FF6B9D;
 
-// 渐变背景 - 彩虹渐变
+// 渐变background - rainbow渐变
 .gradient-page {
     --background: linear-gradient(180deg,
-        #FF6B9D 0%,
-        #FF8DA1 15%,
-        #FFA500 30%,
-        #FFD93D 45%,
-        #6BCB77 60%,
-        #4D96FF 75%,
-        #9B59B6 90%,
-        #8B3F8F 100%);
+            #FF6B9D 0%,
+            #FF8DA1 15%,
+            #FFA500 30%,
+            #FFD93D 45%,
+            #6BCB77 60%,
+            #4D96FF 75%,
+            #9B59B6 90%,
+            #8B3F8F 100%);
     --padding-bottom: 90px;
     position: relative;
 
-    // 彩虹光晕背景
+    // rainbow光晕background
     &::before {
         content: '';
         position: fixed;
@@ -45,7 +40,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 SEARCH BAR - 彩虹玻璃态
+// SEARCH BAR - rainbow玻璃态
 // ========================================
 .search-section {
     padding: 16px;
@@ -54,16 +49,15 @@ $rainbow-pink: #FF6B9D;
 }
 
 .search-bar {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95), 
-        rgba(255, 255, 255, 0.85)
-    );
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.85));
     border-radius: 20px;
     padding: 12px 16px;
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 1);
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -71,7 +65,7 @@ $rainbow-pink: #FF6B9D;
     transition: all 0.3s;
 
     &:focus-within {
-        box-shadow: 
+        box-shadow:
             0 8px 32px rgba(77, 150, 255, 0.4),
             0 0 0 4px rgba(77, 150, 255, 0.2),
             inset 0 1px 0 rgba(255, 255, 255, 1);
@@ -108,7 +102,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🌈 CATEGORIES SECTION - 响应式五彩按钮
+// CATEGORIES SECTION - responsive五彩btn
 // ========================================
 .categories-section {
     padding: 12px 16px 16px;
@@ -121,7 +115,7 @@ $rainbow-pink: #FF6B9D;
     font-weight: 800;
     color: white;
     margin: 0 0 12px 0;
-    text-shadow: 
+    text-shadow:
         0 2px 8px rgba(0, 0, 0, 0.3),
         0 0 20px rgba(255, 255, 255, 0.2);
     letter-spacing: 0.5px;
@@ -140,24 +134,23 @@ $rainbow-pink: #FF6B9D;
     }
 }
 
-// 🌈🌈🌈 响应式五彩按钮
+// responsive五彩btn
 .category-chip {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: clamp(6px, 1.5vw, 10px);
     padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0.2)
-    );
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.2));
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: clamp(16px, 4vw, 24px);
     white-space: nowrap;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
-    box-shadow: 
+    box-shadow:
         0 4px 16px rgba(0, 0, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
     position: relative;
@@ -165,7 +158,7 @@ $rainbow-pink: #FF6B9D;
     flex-shrink: 0;
     min-width: fit-content;
 
-    // 光泽效果
+    // 光泽effect
     &::before {
         content: '';
         position: absolute;
@@ -174,10 +167,9 @@ $rainbow-pink: #FF6B9D;
         width: 100%;
         height: 100%;
         background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent
-        );
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent);
         transition: left 0.6s;
     }
 
@@ -198,10 +190,10 @@ $rainbow-pink: #FF6B9D;
         white-space: nowrap;
     }
 
-    // Hover效果
+    // Hover effect
     &:hover {
         transform: translateY(-3px) scale(1.05);
-        box-shadow: 
+        box-shadow:
             0 8px 24px rgba(0, 0, 0, 0.2),
             inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
@@ -218,7 +210,7 @@ $rainbow-pink: #FF6B9D;
         transform: scale(0.95);
     }
 
-    // 🌈🌈🌈 五彩选中状态 - 每个按钮不同颜色
+    //五彩选中status - 每个btn不同颜色
     &.active {
         border-color: transparent;
         transform: scale(1.08);
@@ -242,30 +234,28 @@ $rainbow-pink: #FF6B9D;
             inset: 0;
             border-radius: clamp(14px, 3.5vw, 22px);
             background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.4) 0%,
-                transparent 50%,
-                rgba(255, 255, 255, 0.2) 100%
-            );
+                    rgba(255, 255, 255, 0.4) 0%,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.2) 100%);
             pointer-events: none;
         }
     }
 }
 
-// 🌈 每个分类独特的彩虹色
+// 每个category独特的彩虹色
 .category-chip:nth-child(1).active {
     // All - 彩虹渐变
     background: linear-gradient(135deg,
-        #FF6B6B 0%,
-        #FFA500 16%,
-        #FFD93D 33%,
-        #6BCB77 50%,
-        #4D96FF 66%,
-        #9B59B6 83%,
-        #FF6B9D 100%
-    );
+            #FF6B6B 0%,
+            #FFA500 16%,
+            #FFD93D 33%,
+            #6BCB77 50%,
+            #4D96FF 66%,
+            #9B59B6 83%,
+            #FF6B9D 100%);
     background-size: 300% 100%;
     animation: rainbow-flow 3s ease infinite, rainbow-pulse 2s ease-in-out infinite;
-    box-shadow: 
+    box-shadow:
         0 6px 24px rgba(155, 89, 182, 0.6),
         0 0 0 4px rgba(255, 255, 255, 0.3);
 }
@@ -273,7 +263,7 @@ $rainbow-pink: #FF6B9D;
 .category-chip:nth-child(2).active {
     // Pizza - 红橙渐变
     background: linear-gradient(135deg, #FF6B6B, #FF8E53);
-    box-shadow: 
+    box-shadow:
         0 6px 24px rgba(255, 107, 107, 0.6),
         0 0 0 4px rgba(255, 107, 107, 0.3);
 }
@@ -281,7 +271,7 @@ $rainbow-pink: #FF6B9D;
 .category-chip:nth-child(3).active {
     // Burger - 橙黄渐变
     background: linear-gradient(135deg, #FFA500, #FFD93D);
-    box-shadow: 
+    box-shadow:
         0 6px 24px rgba(255, 165, 0, 0.6),
         0 0 0 4px rgba(255, 165, 0, 0.3);
 }
@@ -289,7 +279,7 @@ $rainbow-pink: #FF6B9D;
 .category-chip:nth-child(4).active {
     // Sushi - 粉红渐变
     background: linear-gradient(135deg, #FF6B9D, #FF8DA1);
-    box-shadow: 
+    box-shadow:
         0 6px 24px rgba(255, 107, 157, 0.6),
         0 0 0 4px rgba(255, 107, 157, 0.3);
 }
@@ -297,7 +287,7 @@ $rainbow-pink: #FF6B9D;
 .category-chip:nth-child(5).active {
     // Ramen - 黄绿渐变
     background: linear-gradient(135deg, #FFD93D, #6BCB77);
-    box-shadow: 
+    box-shadow:
         0 6px 24px rgba(107, 203, 119, 0.6),
         0 0 0 4px rgba(107, 203, 119, 0.3);
 }
@@ -305,7 +295,7 @@ $rainbow-pink: #FF6B9D;
 .category-chip:nth-child(6).active {
     // Bibimbap - 绿蓝渐变
     background: linear-gradient(135deg, #6BCB77, #4D96FF);
-    box-shadow: 
+    box-shadow:
         0 6px 24px rgba(77, 150, 255, 0.6),
         0 0 0 4px rgba(77, 150, 255, 0.3);
 }
@@ -313,13 +303,13 @@ $rainbow-pink: #FF6B9D;
 .category-chip:nth-child(7).active {
     // Dessert - 蓝紫渐变
     background: linear-gradient(135deg, #4D96FF, #9B59B6);
-    box-shadow: 
+    box-shadow:
         0 6px 24px rgba(155, 89, 182, 0.6),
         0 0 0 4px rgba(155, 89, 182, 0.3);
 }
 
 // ========================================
-// 🎨 POPULAR HEADER - 响应式
+// POPULAR HEADER - responsive
 // ========================================
 .popular-header {
     display: flex;
@@ -333,9 +323,8 @@ $rainbow-pink: #FF6B9D;
 
 .view-all-btn {
     background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.35),
-        rgba(255, 255, 255, 0.25)
-    );
+            rgba(255, 255, 255, 0.35),
+            rgba(255, 255, 255, 0.25));
     border: 2px solid rgba(255, 255, 255, 0.4);
     padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
     border-radius: clamp(12px, 3vw, 16px);
@@ -345,7 +334,7 @@ $rainbow-pink: #FF6B9D;
     cursor: pointer;
     transition: all 0.3s;
     backdrop-filter: blur(10px);
-    box-shadow: 
+    box-shadow:
         0 4px 16px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -354,9 +343,8 @@ $rainbow-pink: #FF6B9D;
 
     &:hover {
         background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.45),
-            rgba(255, 255, 255, 0.35)
-        );
+                rgba(255, 255, 255, 0.45),
+                rgba(255, 255, 255, 0.35));
         transform: translateY(-2px);
     }
 
@@ -366,7 +354,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 DISHES GRID - 响应式
+// DISHES GRID - responsive
 // ========================================
 .dishes-grid {
     display: grid;
@@ -378,13 +366,12 @@ $rainbow-pink: #FF6B9D;
 }
 
 .dish-card {
-    background: linear-gradient(180deg, 
-        rgba(255, 255, 255, 0.95) 0%, 
-        rgba(255, 255, 255, 0.9) 100%
-    );
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 255, 255, 0.9) 100%);
     border-radius: clamp(16px, 4vw, 24px);
     overflow: hidden;
-    box-shadow: 
+    box-shadow:
         0 8px 24px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -393,7 +380,7 @@ $rainbow-pink: #FF6B9D;
 
     &:hover {
         transform: translateY(-6px);
-        box-shadow: 
+        box-shadow:
             0 12px 32px rgba(77, 150, 255, 0.3),
             inset 0 1px 0 rgba(255, 255, 255, 1);
     }
@@ -421,8 +408,15 @@ $rainbow-pink: #FF6B9D;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 .favorite-btn {
@@ -434,9 +428,8 @@ $rainbow-pink: #FF6B9D;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.5);
     background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.95),
-        rgba(255, 255, 255, 0.85)
-    );
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.85));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -468,16 +461,22 @@ $rainbow-pink: #FF6B9D;
 }
 
 @keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.3); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
 }
 
 .card-info {
     padding: clamp(10px, 3vw, 16px);
-    background: linear-gradient(180deg, 
-        transparent 0%, 
-        rgba(255, 255, 255, 0.6) 100%
-    );
+    background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.6) 100%);
 }
 
 .product-name {
@@ -561,7 +560,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 NO RESULTS - 响应式
+// NO RESULTS - responsive
 // ========================================
 .no-results {
     display: flex;
@@ -586,10 +585,9 @@ $rainbow-pink: #FF6B9D;
 }
 
 .reset-btn {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95), 
-        rgba(255, 255, 255, 0.85)
-    );
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.85));
     border: 2px solid rgba(255, 255, 255, 0.5);
     padding: clamp(10px, 3vw, 14px) clamp(20px, 5vw, 28px);
     border-radius: clamp(12px, 3vw, 16px);
@@ -610,7 +608,7 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🎨 BOTTOM NAV - 响应式五彩
+// BOTTOM NAV - responsive五彩
 // ========================================
 .bottom-nav {
     position: fixed;
@@ -619,14 +617,13 @@ $rainbow-pink: #FF6B9D;
     right: 0;
     height: clamp(60px, 15vw, 75px);
     background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.98),
-        rgba(255, 255, 255, 0.95)
-    );
+            rgba(255, 255, 255, 0.98),
+            rgba(255, 255, 255, 0.95));
     backdrop-filter: blur(25px) saturate(180%);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 
+    box-shadow:
         0 -6px 24px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 1);
     padding: clamp(6px, 2vw, 10px) 0;
@@ -661,62 +658,62 @@ $rainbow-pink: #FF6B9D;
         white-space: nowrap;
     }
 
-    // 五彩active状态
+    // 五彩active status
     &.active:nth-child(1) {
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.2),
-            rgba(255, 142, 83, 0.15)
-        );
-        
+        background: linear-gradient(135deg,
+                rgba(255, 107, 107, 0.2),
+                rgba(255, 142, 83, 0.15));
+
         ion-icon {
             color: #FF6B6B;
             transform: scale(1.15);
         }
+
         span {
             color: #FF6B6B;
         }
     }
 
     &.active:nth-child(2) {
-        background: linear-gradient(135deg, 
-            rgba(255, 165, 0, 0.2),
-            rgba(255, 217, 61, 0.15)
-        );
-        
+        background: linear-gradient(135deg,
+                rgba(255, 165, 0, 0.2),
+                rgba(255, 217, 61, 0.15));
+
         ion-icon {
             color: #FFA500;
             transform: scale(1.15);
         }
+
         span {
             color: #FFA500;
         }
     }
 
     &.active:nth-child(3) {
-        background: linear-gradient(135deg, 
-            rgba(107, 203, 119, 0.2),
-            rgba(77, 150, 255, 0.15)
-        );
-        
+        background: linear-gradient(135deg,
+                rgba(107, 203, 119, 0.2),
+                rgba(77, 150, 255, 0.15));
+
         ion-icon {
             color: #6BCB77;
             transform: scale(1.15);
         }
+
         span {
             color: #6BCB77;
         }
     }
 
     &.active:nth-child(4) {
-        background: linear-gradient(135deg, 
-            rgba(77, 150, 255, 0.2),
-            rgba(155, 89, 182, 0.15)
-        );
-        
+        background: linear-gradient(135deg,
+                rgba(77, 150, 255, 0.2),
+                rgba(155, 89, 182, 0.15));
+
         ion-icon {
             color: #4D96FF;
             transform: scale(1.15);
         }
+
         span {
             color: #4D96FF;
         }
@@ -742,48 +739,90 @@ $rainbow-pink: #FF6B9D;
 }
 
 // ========================================
-// 🌈 ANIMATIONS
+// ANIMATIONS
 // ========================================
 @keyframes rainbow-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.85; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.85;
+    }
 }
 
 @keyframes rainbow-flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes pulse-rainbow {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 @keyframes icon-bounce {
-    0%, 100% { transform: scale(1); }
-    30% { transform: scale(1.3); }
-    50% { transform: scale(0.9); }
-    70% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.3);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
 }
 
 @keyframes float-icon {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
 }
 
 // ========================================
-// 🎨 RESPONSIVE BREAKPOINTS
+// RESPONSIVE BREAKPOINTS
 // ========================================
 @media (max-width: 360px) {
     .categories-scroll {
         gap: 6px;
     }
-    
+
     .category-chip {
         padding: 8px 12px;
     }
-    
+
     .dishes-grid {
         gap: 10px;
     }
